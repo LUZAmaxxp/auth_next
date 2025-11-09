@@ -7,7 +7,6 @@ import { useMedia } from "@core/hooks/use-media";
 import { Form } from "@core/ui/form";
 import { authClient } from "@/lib/auth-client";
 import toast from "react-hot-toast";
-import { useTranslations } from "@/hooks/use-translations";
 import { z } from "zod";
 
 const magicLinkSchema = z.object({
@@ -21,8 +20,6 @@ const initialValues: MagicLinkSchema = {
 };
 
 export default function MagicLinkForm() {
-  const { t: t } = useTranslations();
-  const { t: tAuth } = useTranslations();
   const isMedium = useMedia("(max-width: 1200px)", false);
   const [isLoading, setIsLoading] = useState(false);
   const [reset, setReset] = useState({});
@@ -124,8 +121,8 @@ export default function MagicLinkForm() {
           <Input
             type="email"
             size={isMedium ? "lg" : "xl"}
-            label={t("form.form-email")}
-            placeholder={t("form.form-email-placeholder")}
+            label="Email"
+            placeholder="Enter your email address"
             className="[&>label>span]:font-medium [&>label>span]:text-black"
             {...register("email")}
             error={errors.email?.message}

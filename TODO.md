@@ -1,3 +1,20 @@
 - [x] Remove drizzle-orm, pg, and drizzle-kit from package.json
 - [x] Update README.md to remove Drizzle references
 - [x] Run npm install to update dependencies
+- [x] Install mongoose for MongoDB integration
+- [x] Create database connection utility (db.ts)
+- [x] Create MongoDB schemas for Intervention and Reclamation models
+- [x] Create POST API route for interventions (/api/interventions)
+- [x] Create POST API route for reclamations (/api/reclamations)
+- [x] Create GET API route for records (/api/records)
+- [x] Install additional dependencies (docx, exceljs, zustand, shadcn/ui)
+- [x] Create multi-step forms for interventions and reclamations
+- [x] Implement DOCX report generation
+- [x] Add email sending functionality for reports
+- [x] Build personal dashboard with submissions tracking
+- [x] Add Excel export functionality
+- [x] Integrate file uploads (uploadthing)
+- [x] Update navigation and home page
+- [x] Test all functionality end-to-end
+- [x] Remove translation hooks from auth forms
+- [x] Add console.error logging to error handling in forms and dashboard

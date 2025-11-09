@@ -1,11 +1,9 @@
 "use client";
 import { useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useTranslations } from '@/hooks/use-translations';
 import { Button } from "rizzui";
 import AuthWrapperFour from '@/app/shared/auth-layout/auth-wrapper-four';
 import { routes } from "@/config/routes";
-import { authClient } from "@/lib/auth-client";
 
 export default function VerifyEmailPage() {
   const [status, setStatus] = useState<"verifying" | "success" | "error">(
@@ -14,7 +12,6 @@ export default function VerifyEmailPage() {
   const [message, setMessage] = useState<string>("");
   const searchParams = useSearchParams();
   const router = useRouter();
-  const { t: t } = useTranslations();
 
   useEffect(() => {
     const verifyEmail = async () => {

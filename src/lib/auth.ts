@@ -39,7 +39,7 @@ export const auth = betterAuth({
         });
 
         await transporter.sendMail({
-          from: MAIL.from || "no_reply@notify.fevertokens.io",
+          from: MAIL.from || "no_reply@notify.srm-sm.io",
           to: email,
           subject: `TEI - Magic Link Sign In (${dateString} at ${timeString})`,
           html: `
@@ -54,7 +54,7 @@ export const auth = betterAuth({
               <div style="max-width:600px;margin:0 auto;background:#ffffff;border:1px solid rgba(0,0,0,0.1);">
                 <!-- Header -->
                 <div style="background:#ffffff;padding:40px 32px;text-align:center;border-bottom:1px solid rgba(0,0,0,0.1);">
-                  <img src="${url.split("/api")[0]}/TEIlogo.png" alt="Tokenized Economies Institute" style="width:120px;height:auto;margin-bottom:24px;" />
+                  <img src="${url.split("/api")[0]}/TEIlogo.png" alt="srm-sm" style="width:120px;height:auto;margin-bottom:24px;" />
                   <h1 style="color:#333333;margin:0;font-size:28px;font-weight:700;letter-spacing:-0.5px;">Magic Link Sign In</h1>
                   <p style="color:#666666;margin:12px 0 0 0;font-size:16px;">Secure passwordless access to your account</p>
                 </div>
@@ -64,7 +64,7 @@ export const auth = betterAuth({
                   <h2 style="color:#333333;margin:0 0 20px 0;font-size:24px;font-weight:600;">Sign In to Your Account</h2>
                   
                   <p style="color:#333333;font-size:16px;line-height:1.6;margin:0 0 24px 0;">
-                    You requested a magic link to sign in to the <strong>Tokenized Economies Institute</strong> platform. 
+                    You requested a magic link to sign in to the <strong>Srm-Sm</strong> platform. 
                     Click the button below to access your account instantly - no password required!
                   </p>
                   
@@ -80,10 +80,10 @@ export const auth = betterAuth({
                       Once you click the link, you'll have immediate access to:
                     </p>
                     <ul style="color:#333333;margin:0;padding-left:20px;line-height:1.8;font-size:14px;">
-                      <li>Real-world use cases from global development institutions</li>
-                      <li>Live blockchain projects funding refugee aid and carbon credits</li>
-                      <li>Research on digital bonds and financial inclusion initiatives</li>
-                      <li>Expert analysis from leading institutions and blockchain researchers</li>
+                      <li>Dashboard access</li>
+                      <li>downloading excel file</li>
+                      <li>Creation of reclamations and interventions</li>
+                    
                     </ul>
                   </div>
                   
@@ -97,7 +97,7 @@ export const auth = betterAuth({
                     </p>
                     <p style="color:#666666;font-size:14px;line-height:1.6;margin:0;">
                       If you didn't request this sign-in link, you can safely ignore this email. If you have any questions, contact us at 
-                      <a href="mailto:support@tokenizedeconomies.org" style="color:#ef4444;text-decoration:none;">support@tokenizedeconomies.org</a>
+                      <a href="https://www.linkedin.com/in/ayman-allouch-9019b52a0/" style="color:#ef4444;text-decoration:none;">allouchayman21@gmail.com</a>
                     </p>
                   </div>
                 </div>
@@ -105,7 +105,7 @@ export const auth = betterAuth({
                 <!-- Footer -->
                 <div style="background:rgba(255,240,245,0.3);padding:24px 32px;text-align:center;border-top:1px solid rgba(0,0,0,0.1);">
                   <p style="color:#666666;font-size:12px;margin:0 0 8px 0;">
-                    © 2024 Tokenized Economies Institute. All rights reserved.
+                    © Ayman ALLOUCH. All rights reserved.
                   </p>
                   <p style="color:#666666;font-size:12px;margin:0;">
                     This email was sent to ${email}
@@ -153,22 +153,22 @@ export const auth = betterAuth({
       });
 
       await transporter.sendMail({
-        from: MAIL.from || "no_reply@notify.fevertokens.io",
+        from: MAIL.from || "no_reply@notify.srm-sm.io",
         to: user.email,
-        subject: `TEI - Password Reset Request (${dateString} at ${timeString})`,
+        subject: `SRM-SM - Password Reset Request (${dateString} at ${timeString})`,
         html: `
           <!DOCTYPE html>
           <html>
           <head>
             <meta charset="utf-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>Password Reset - TEI</title>
+            <title>Password Reset - SRM-SM</title>
           </head>
           <body style="margin:0;padding:0;background-color:#ffffff;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;">
             <div style="max-width:600px;margin:0 auto;background:#ffffff;border:1px solid rgba(0,0,0,0.1);">
               <!-- Header -->
               <div style="background:#ffffff;padding:40px 32px;text-align:center;border-bottom:1px solid rgba(0,0,0,0.1);">
-                <img src="${url.split("/api")[0]}/TEIlogo.png" alt="Tokenized Economies Institute" style="width:120px;height:auto;margin-bottom:24px;" />
+                <img src="${url.split("/api")[0]}/TEIlogo.png" alt="SRM-SM" style="width:120px;height:auto;margin-bottom:24px;" />
                 <h1 style="color:#333333;margin:0;font-size:28px;font-weight:700;letter-spacing:-0.5px;">Password Reset Request</h1>
                 <p style="color:#666666;margin:12px 0 0 0;font-size:16px;">Secure password recovery for your account</p>
               </div>
@@ -178,7 +178,7 @@ export const auth = betterAuth({
                 <h2 style="color:#333333;margin:0 0 20px 0;font-size:24px;font-weight:600;">Reset Your Password</h2>
                 
                 <p style="color:#333333;font-size:16px;line-height:1.6;margin:0 0 24px 0;">
-                  We received a request to reset the password for your <strong>Tokenized Economies Institute</strong> account. 
+                  We received a request to reset the password for your <strong>SRM-SM</strong> account. 
                   Click the button below to create a new password and regain access to your account.
                 </p>
                 
@@ -212,7 +212,7 @@ export const auth = betterAuth({
                   </p>
                   <p style="color:#666666;font-size:14px;line-height:1.6;margin:0;">
                     If you have any questions or concerns, contact us at 
-                    <a href="mailto:support@tokenizedeconomies.org" style="color:#ef4444;text-decoration:none;">support@tokenizedeconomies.org</a>
+                    <a href="https://www.linkedin.com/in/ayman-allouch-9019b52a0/" style="color:#ef4444;text-decoration:none;">Ayman ALLOUCH</a>
                   </p>
                 </div>
               </div>
@@ -220,7 +220,7 @@ export const auth = betterAuth({
               <!-- Footer -->
               <div style="background:rgba(255,240,245,0.3);padding:24px 32px;text-align:center;border-top:1px solid rgba(0,0,0,0.1);">
                 <p style="color:#666666;font-size:12px;margin:0 0 8px 0;">
-                  © 2024 Tokenized Economies Institute. All rights reserved.
+                  © Ayma ALLOUCH. All rights reserved.
                   </p>
                   <p style="color:#666666;font-size:12px;margin:0;">
                     This email was sent to ${user.email}
@@ -248,11 +248,11 @@ export const auth = betterAuth({
       });
 
       await transporter.sendMail({
-        from: MAIL.from || "no_reply@notify.fevertokens.io",
+        from: MAIL.from || "no_reply@notify.SRM-SM.io",
         to: user.email,
         subject: "Welcome to TEI - Verify Your Email Address",
         text: `
-Welcome to the Tokenized Economies Institute (TEI)!
+Welcome to Sociéte Regionale Multiservices - SOUSS MASSA!
 
 Thank you for joining our research platform. To complete your registration and secure your account, please verify your email address by clicking the link below:
 
@@ -261,19 +261,18 @@ ${url}
 This verification link will expire in 24 hours for security reasons.
 
 Once verified, you'll have access to:
-• Real-world tokenization use cases from development finance institutions
-• Live projects and pilots advancing financial inclusion and ESG goals
-• Research on blockchain solutions for refugee aid, carbon credits, and digital bonds
-• Expert insights from leading financial institutions, regulators, and blockchain researchers
+• Dashboard access
+• Downloading excel file
+• Creation of reclamations and interventions
 
-TEI brings together the global development community to accelerate tokenization where it can have the greatest impact - from microfinance in fragile contexts to carbon-linked tokenized bonds.
+
+
 
 If you didn't create this account, you can safely ignore this email.
 
 Best regards,
-The Tokenized Economies Institute Team
-
-Need help? Contact us at support@tokenizedeconomies.org
+Ayman ALLOUCH
+Need help? Contact us at  allouchayman21@gmail.com
         `,
         html: `
           <!DOCTYPE html>
@@ -287,7 +286,7 @@ Need help? Contact us at support@tokenizedeconomies.org
             <div style="max-width:600px;margin:0 auto;background:#ffffff;border:1px solid rgba(0,0,0,0.1);">
               <!-- Header -->
               <div style="background:#ffffff;padding:40px 32px;text-align:center;border-bottom:1px solid rgba(0,0,0,0.1);">
-                <img src="${url.split("/api")[0]}/TEIlogo.png" alt="Tokenized Economies Institute" style="width:120px;height:auto;margin-bottom:24px;" />
+                <img src="${url.split("/api")[0]}/TEIlogo.png" alt="SRM-SM" style="width:120px;height:auto;margin-bottom:24px;" />
                 <h1 style="color:#333333;margin:0;font-size:28px;font-weight:700;letter-spacing:-0.5px;">Welcome to TEI!</h1>
                 <p style="color:#666666;margin:12px 0 0 0;font-size:16px;">Advancing research and innovation in tokenization for development finance</p>
               </div>
@@ -306,22 +305,7 @@ Need help? Contact us at support@tokenizedeconomies.org
                   </a>
                 </div>
                 
-                <div style="background:rgba(255,240,245,0.3);border-radius:12px;border-left:4px solid #ef4444;padding:24px;margin:32px 0;">
-                  <h3 style="color:#333333;margin:0 0 16px 0;font-size:18px;font-weight:600;">Discover Tokenization in Action</h3>
-                  <p style="color:#333333;margin:0 0 16px 0;font-size:14px;line-height:1.7;">
-                    Access real-world use cases from global development institutions using blockchain to fund refugee aid, track carbon credits, and issue digital bonds.
-                  </p>
-                  <ul style="color:#333333;margin:0;padding-left:20px;line-height:1.8;font-size:14px;">
-                    <li>Live projects and pilots advancing financial inclusion and ESG goals</li>
-                    <li>Research from leading financial institutions and blockchain experts</li>
-                    <li>Insights on microfinance in fragile contexts and carbon-linked bonds</li>
-                    <li>Expert analysis on capital market innovation and tokenization</li>
-                  </ul>
-                </div>
                 
-                <p style="color:#333333;font-size:14px;line-height:1.6;margin:24px 0 0 0;font-style:italic;">
-                  "Tokenization is no longer theoretical. It is here, and it is working." - TEI Research Team
-                </p>
                 
                 <div style="border-top:1px solid rgba(0,0,0,0.1);padding-top:24px;margin-top:32px;">
                   <p style="color:#666666;font-size:14px;line-height:1.6;margin:0 0 16px 0;">
@@ -329,7 +313,7 @@ Need help? Contact us at support@tokenizedeconomies.org
                   </p>
                   <p style="color:#666666;font-size:14px;line-height:1.6;margin:0;">
                     If you didn't create this account, you can safely ignore this email. If you have any questions, contact us at 
-                    <a href="mailto:support@tokenizedeconomies.org" style="color:#ef4444;text-decoration:none;">support@tokenizedeconomies.org</a>
+                    <a href="https://www.linkedin.com/in/ayman-allouch-9019b52a0/" style="color:#ef4444;text-decoration:none;">Ayman ALLOUCH</a>
                   </p>
                 </div>
               </div>
@@ -337,7 +321,7 @@ Need help? Contact us at support@tokenizedeconomies.org
               <!-- Footer -->
               <div style="background:rgba(255,240,245,0.3);padding:24px 32px;text-align:center;border-top:1px solid rgba(0,0,0,0.1);">
                 <p style="color:#666666;font-size:12px;margin:0 0 8px 0;">
-                  © 2024 Tokenized Economies Institute. All rights reserved.
+                  © 2024 Ayman ALLOUCH. All rights reserved.
                 </p>
                 <p style="color:#666666;font-size:12px;margin:0;">
                   This email was sent to ${user.email}
