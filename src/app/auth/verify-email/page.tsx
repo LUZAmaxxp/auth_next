@@ -4,6 +4,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { Button } from "rizzui";
 import AuthWrapperFour from '@/app/shared/auth-layout/auth-wrapper-four';
 import { routes } from "@/config/routes";
+import { messages } from "@/config/messages";
 
 export default function VerifyEmailPage() {
   const [status, setStatus] = useState<"verifying" | "success" | "error">(
@@ -20,7 +21,7 @@ export default function VerifyEmailPage() {
 
       if (!token || !email) {
         setStatus("error");
-        setMessage("Invalid verification link.");
+        setMessage(messages["auth.auth-invalid-link"]);
         return;
       }
 
@@ -34,7 +35,7 @@ export default function VerifyEmailPage() {
 
         if (response.ok) {
           setStatus("success");
-          setMessage("Email verified successfully!");
+          setMessage(messages["auth.auth-email-verified-success"]);
 
           // Auto-redirect after 3 seconds to dashboard since user is now verified
           setTimeout(() => {
@@ -43,12 +44,12 @@ export default function VerifyEmailPage() {
         } else {
           const errorData = await response.json().catch(() => ({}));
           setStatus("error");
-          setMessage(errorData.message || "Verification failed.");
+          setMessage(errorData.message || messages["auth.auth-verification-failed-msg"]);
         }
       } catch (error) {
         console.error("Email verification error:", error);
         setStatus("error");
-        setMessage("Verification failed. Please try again later.");
+        setMessage(messages["auth.auth-verification-failed-retry"]);
       }
     };
 
@@ -58,11 +59,11 @@ export default function VerifyEmailPage() {
   const getTitle = () => {
     switch (status) {
       case "verifying":
-        return "Verifying Your Email...";
+        return messages["auth.auth-verifying-email"];
       case "success":
-        return "Email Successfully Verified!";
+        return messages["auth.auth-email-verified"];
       case "error":
-        return "Verification Failed";
+        return messages["auth.auth-verification-failed"];
       default:
         return "Email Verification";
     }
@@ -98,7 +99,7 @@ export default function VerifyEmailPage() {
         <div className="space-y-4">
           {status === "verifying" && (
             <p className="text-gray-600">
-              Please wait while we verify your email address...
+              {messages["auth.auth-wait-verifying"]}
             </p>
           )}
 
@@ -108,7 +109,7 @@ export default function VerifyEmailPage() {
                 <p className="text-green-800 font-medium">{message}</p>
               </div>
               <p className="text-gray-600">
-                Welcome! You will be automatically redirected in 3 seconds.
+                {messages["auth.auth-welcome-redirect"]}
               </p>
             </div>
           )}
@@ -119,7 +120,7 @@ export default function VerifyEmailPage() {
                 <p className="text-red-800 font-medium">{message}</p>
               </div>
               <p className="text-gray-600 text-sm">
-                Please try requesting a new verification email or contact support if the problem persists.
+                {messages["auth.auth-try-new-verification"]}
               </p>
             </div>
           )}
@@ -160,7 +161,7 @@ export default function VerifyEmailPage() {
           <p className="text-sm text-gray-500">
             Need help?{' '}
             <a
-              href="mailto:support@tokenizedeconomies.org"
+              href="https://www.linkedin.com/in/ayman-allouch-9019b52a0/"
               className="text-primary hover:text-primary/80 font-medium"
             >
               Contact Support

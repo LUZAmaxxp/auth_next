@@ -137,7 +137,7 @@ function AuthFooter() {
           href="https://safedetect.com/"
           className="font-medium transition-colors hover:text-primary"
         >
-          Safedetect
+         Sociéte Régionale Multiservices SOUSS MASSA
         </Link>
         , {t("auth.auth-all-rights-reserved")}
       </div>

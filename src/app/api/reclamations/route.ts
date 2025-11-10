@@ -3,10 +3,7 @@ import { auth } from '@/lib/auth';
 import dbConnect from '@/lib/db';
 import { Reclamation } from '@/lib/models';
 import { generateReclamationDoc } from '@/lib/docx-generator';
-import { Resend } from 'resend';
-import nodemailer from 'nodemailer';
-
-const resend = new Resend(process.env.RESEND_API_KEY || 'dummy-key');
+import { emailService } from '@/lib/email-service';
 
 export async function POST(request: NextRequest) {
   try {
@@ -95,54 +92,20 @@ export async function POST(request: NextRequest) {
 
     const docxBuffer = await generateReclamationDoc(docxData);
 
-    // Send email with attachment using SMTP (fallback to Resend if available)
+    // Send email with attachment using the new email service
     const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
     const fileName = `Reclamation_Report_${timestamp}.docx`;
 
-    try {
-      // Try Resend first if API key is available and not restricted
-      if (process.env.RESEND_API_KEY && process.env.RESEND_API_KEY !== 'dummy-key') {
-        await resend.emails.send({
-          from: 'noreply@srm-sm.com',
-          to: recipientEmails,
-          subject: `New Reclamation Report - ${stationName}`,
-          text: 'Please find the attached reclamation report.',
-          attachments: [
-            {
-              filename: fileName,
-              content: docxBuffer.toString('base64'),
-              contentType: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
-            },
-          ],
-        });
-      } else {
-        // Fallback to SMTP using nodemailer
-        const transporter = nodemailer.createTransport({
-          host: process.env.SMTP_HOST || 'smtp.gmail.com',
-          port: parseInt(process.env.SMTP_PORT || '587'),
-          secure: false,
-          auth: {
-            user: process.env.SMTP_USER,
-            pass: process.env.SMTP_PASS,
-          },
-        });
+    const emailSent = await emailService.sendReportEmail(
+      recipientEmails,
+      `New Reclamation Report - ${stationName}`,
+      docxBuffer,
+      fileName,
+      'reclamation'
+    );
 
-        await transporter.sendMail({
-          from: process.env.SMTP_FROM || 'noreply@srm-sm.com',
-          to: recipientEmails.join(', '),
-          subject: `New Reclamation Report - ${stationName}`,
-          text: 'Please find the attached reclamation report.',
-          attachments: [
-            {
-              filename: fileName,
-              content: docxBuffer,
-              contentType: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
-            },
-          ],
-        });
-      }
-    } catch (emailError) {
-      console.error('Error sending email:', emailError);
+    if (!emailSent) {
+      console.error('Failed to send reclamation report email');
       // Don't fail the request if email fails, just log it
     }
 

@@ -15,12 +15,13 @@ import { Progress } from '@/components/ui/progress';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { FileUpload } from '@/components/ui/file-upload';
 import toast, { Toaster } from 'react-hot-toast';
+import { messages } from '@/config/messages';
 
 const steps = [
-  { title: 'Basic Information', description: 'Enter the basic details of the reclamation' },
-  { title: 'Description & Photo', description: 'Provide detailed description and upload photo' },
-  { title: 'Recipients', description: 'Add email recipients for the report' },
-  { title: 'Review & Submit', description: 'Review your information and submit' },
+  { title: messages["reclamation.step-basic"], description: messages["reclamation.step-basic-desc"] },
+  { title: messages["reclamation.step-desc"], description: messages["reclamation.step-desc-desc"] },
+  { title: messages["reclamation.step-recipients"], description: messages["reclamation.step-recipients-desc"] },
+  { title: messages["intervention.step-review"], description: messages["intervention.step-review-desc"] },
 ];
 
 export default function NewReclamationPage() {
@@ -118,8 +119,8 @@ export default function NewReclamationPage() {
     <div className="min-h-screen bg-gray-50 py-8">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-900">New Reclamation</h1>
-          <p className="mt-2 text-gray-600">Create a new reclamation record</p>
+          <h1 className="text-3xl font-bold text-gray-900">{messages["reclamation.new-title"]}</h1>
+          <p className="mt-2 text-gray-600">{messages["reclamation.new-subtitle"]}</p>
         </div>
 
         {/* Progress Bar */}
@@ -169,7 +170,7 @@ export default function NewReclamationPage() {
               {currentStep === 1 && (
                 <div className="space-y-6">
                   <div>
-                    <Label htmlFor="date">Date</Label>
+                    <Label htmlFor="date">{messages["form.date"]}</Label>
                     <Input
                       id="date"
                       type="date"
@@ -181,11 +182,11 @@ export default function NewReclamationPage() {
                     )}
                   </div>
                   <div>
-                    <Label htmlFor="stationName">Station Name</Label>
+                    <Label htmlFor="stationName">{messages["form.station-name"]}</Label>
                     <Input
                       id="stationName"
                       {...register('stationName')}
-                      placeholder="Enter station name"
+                      placeholder={messages["form.station-name-placeholder"]}
                       className={errors.stationName ? 'border-red-500' : ''}
                     />
                     {errors.stationName && (
@@ -193,7 +194,7 @@ export default function NewReclamationPage() {
                     )}
                   </div>
                   <div>
-                    <Label htmlFor="reclamationType">Reclamation Type</Label>
+                    <Label htmlFor="reclamationType">{messages["form.reclamation-type"]}</Label>
                     <Select
                       value={watch('reclamationType')}
                       onValueChange={(value: 'hydraulic' | 'electric' | 'mechanic') =>
@@ -201,12 +202,12 @@ export default function NewReclamationPage() {
                       }
                     >
                       <SelectTrigger className={errors.reclamationType ? 'border-red-500' : ''}>
-                        <SelectValue placeholder="Select reclamation type" />
+                        <SelectValue placeholder={messages["form.reclamation-type-placeholder"]} />
                       </SelectTrigger>
                       <SelectContent>
-                        <SelectItem value="hydraulic">Hydraulic</SelectItem>
-                        <SelectItem value="electric">Electric</SelectItem>
-                        <SelectItem value="mechanic">Mechanic</SelectItem>
+                        <SelectItem value="hydraulic">{messages["form.reclamation-type-hydraulic"]}</SelectItem>
+                        <SelectItem value="electric">{messages["form.reclamation-type-electric"]}</SelectItem>
+                        <SelectItem value="mechanic">{messages["form.reclamation-type-mechanic"]}</SelectItem>
                       </SelectContent>
                     </Select>
                     {errors.reclamationType && (
@@ -220,11 +221,11 @@ export default function NewReclamationPage() {
               {currentStep === 2 && (
                 <div className="space-y-6">
                   <div>
-                    <Label htmlFor="description">Description</Label>
+                    <Label htmlFor="description">{messages["form.description"]}</Label>
                     <Textarea
                       id="description"
                       {...register('description')}
-                      placeholder="Describe the reclamation issue in detail"
+                      placeholder={messages["form.description-placeholder"]}
                       rows={6}
                       className={errors.description ? 'border-red-500' : ''}
                     />
@@ -246,7 +247,7 @@ export default function NewReclamationPage() {
               {currentStep === 3 && (
                 <div className="space-y-6">
                   <div>
-                    <Label>Recipient Emails</Label>
+                    <Label>{messages["form.recipient-emails"]}</Label>
                     <div className="space-y-2 mt-2">
                       {recipientEmails.map((email, index) => (
                         <div key={index} className="flex gap-2">
@@ -262,7 +263,7 @@ export default function NewReclamationPage() {
                             size="sm"
                             onClick={() => removeRecipientEmail(index)}
                           >
-                            Remove
+                            {messages["form.remove"]}
                           </Button>
                         </div>
                       ))}
@@ -272,7 +273,7 @@ export default function NewReclamationPage() {
                         onClick={addRecipientEmail}
                         className="w-full"
                       >
-                        Add Recipient Email
+                        {messages["form.add-recipient-email"]}
                       </Button>
                     </div>
                     {errors.recipientEmails && (

@@ -88,7 +88,7 @@ function createContentParagraph(text: string, spacingAfter = 400): Paragraph {
 }
 
 // Helper function to create main header
-function createMainHeader(title: string): Paragraph {
+function createMainHeader(): Paragraph {
   return new Paragraph({
     children: [
       new TextRun({

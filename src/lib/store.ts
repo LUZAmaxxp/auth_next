@@ -79,7 +79,7 @@ export const useAppStore = create<AppStore>()(
             },
           })),
         reset: () =>
-          set((state) => ({
+          set(() => ({
             interventionForm: {
               step: 1,
               data: initialInterventionData,
@@ -101,7 +101,7 @@ export const useAppStore = create<AppStore>()(
             },
           })),
         reset: () =>
-          set((state) => ({
+          set(() => ({
             reclamationForm: {
               step: 1,
               data: initialReclamationData,

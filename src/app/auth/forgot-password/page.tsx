@@ -6,13 +6,13 @@ import { useTranslations } from '@/hooks/use-translations';
 
 export default function ForgotPasswordPage() {
   const { t } = useTranslations();
-  
+
   return (
     <AuthWrapperFour
       title={
         <>
-          {t('auth-forgot-password-4-trouble-signing-in')} <br className="hidden sm:inline-block" />{' '}
-          {t('auth-forgot-password-4-reset-password')}
+          {t('auth.auth-forgot-password-4-trouble-signing-in')} <br className="hidden sm:inline-block" />{' '}
+          {t('auth.auth-forgot-password-4-reset-password')}
         </>
       }
     >

@@ -15,7 +15,7 @@ export const auth = betterAuth({
       },
     }),
     magicLink({
-      sendMagicLink: async ({ email, url, token }, request) => {
+      sendMagicLink: async ({ email, url }) => {
         // Use nodemailer to send the magic link email
         const nodemailer = await import("nodemailer");
 
@@ -127,8 +127,7 @@ export const auth = betterAuth({
     enabled: true,
     requireEmailVerification: true, // Temporarily disable email verification for testing
     sendResetPassword: async (
-      { user, url, token }: { user: any; url: string; token: string },
-      request: any
+      { user, url }: { user: Record<string, unknown>; url: string }
     ) => {
       // Use nodemailer to send the reset password email
       const nodemailer = await import("nodemailer");
@@ -154,7 +153,7 @@ export const auth = betterAuth({
 
       await transporter.sendMail({
         from: MAIL.from || "no_reply@notify.srm-sm.io",
-        to: user.email,
+        to: user.email as string,
         subject: `SRM-SM - Password Reset Request (${dateString} at ${timeString})`,
         html: `
           <!DOCTYPE html>
@@ -183,7 +182,7 @@ export const auth = betterAuth({
                 </p>
                 
                 <div style="text-align:center;margin:32px 0;">
-                  <a href="${url.split("/api")[0]}/auth/reset-password?token=${token}&email=${encodeURIComponent(user.email)}" style="display:inline-block;background:#ef4444;color:#ffffff;text-decoration:none;padding:16px 32px;border-radius:25px;font-weight:600;font-size:16px;box-shadow:0 4px 12px rgba(239,68,68,0.4);transition:all 0.3s ease;">
+                  <a href="${url}" style="display:inline-block;background:#ef4444;color:#ffffff;text-decoration:none;padding:16px 32px;border-radius:25px;font-weight:600;font-size:16px;box-shadow:0 4px 12px rgba(239,68,68,0.4);transition:all 0.3s ease;">
                     Reset My Password
                   </a>
                 </div>
@@ -236,7 +235,7 @@ export const auth = betterAuth({
   emailVerification: {
     sendOnSignUp: true,
     autoSignInAfterVerification: true,
-    sendVerificationEmail: async ({ user, url, token }, request) => {
+    sendVerificationEmail: async ({ user, url }) => {
       // Use nodemailer to send the verification email
       const nodemailer = await import("nodemailer");
 
@@ -249,7 +248,7 @@ export const auth = betterAuth({
 
       await transporter.sendMail({
         from: MAIL.from || "no_reply@notify.SRM-SM.io",
-        to: user.email,
+        to: user.email as string,
         subject: "Welcome to TEI - Verify Your Email Address",
         text: `
 Welcome to Sociéte Regionale Multiservices - SOUSS MASSA!

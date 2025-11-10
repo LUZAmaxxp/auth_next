@@ -93,8 +93,8 @@ export default function ResetPasswordForm() {
             <Input
               type="email"
               size={isMedium ? "lg" : "xl"}
-              label="Email"
-              placeholder="Enter your email"
+              label={t("form.form-email")}
+              placeholder={t("form.form-email-placeholder")}
               className="[&>label>span]:font-medium"
               {...register("email")}
               error={errors.email?.message}
@@ -102,16 +102,16 @@ export default function ResetPasswordForm() {
               value={email}
             />
             <Password
-              label="New Password"
-              placeholder="Enter your new password"
+              label={t("form.form-new-password-label")}
+              placeholder={t("form.form-new-password")}
               size={isMedium ? "lg" : "xl"}
               className="[&>label>span]:font-medium"
               {...register("password")}
               error={errors.password?.message}
             />
             <Password
-              label="Confirm Password"
-              placeholder="Confirm your new password"
+              label={t("form.form-confirm-password-label")}
+              placeholder={t("form.form-confirm-password")}
               size={isMedium ? "lg" : "xl"}
               className="[&>label>span]:font-medium"
               {...register("confirmPassword")}
@@ -123,18 +123,18 @@ export default function ResetPasswordForm() {
               size={isMedium ? "lg" : "xl"}
               isLoading={isLoading}
             >
-              Reset Password
+              {t("auth.auth-reset-password-label")}
             </Button>
           </div>
         )}
       </Form>
       <p className="mt-6 text-center text-[15px] leading-loose text-gray-500 md:mt-7 lg:mt-9 lg:text-base">
-        Remember your password?{" "}
+        {t("auth.auth-remember-password")}{" "}
         <Link
           href={routes.auth.signIn}
           className="font-semibold text-gray-700 transition-colors hover:text-primary"
         >
-          Sign In
+          {t("auth.auth-sign-in")}
         </Link>
       </p>
     </>

@@ -7,6 +7,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Plus, FileText, AlertTriangle, Calendar, Users, MapPin, Table } from 'lucide-react';
 import toast, { Toaster } from 'react-hot-toast';
 import RecordsTable from '@/components/records-table';
+import { authClient } from '@/lib/auth-client';
 
 interface Record {
   _id: string;
@@ -31,10 +32,37 @@ interface Record {
 export default function DashboardPage() {
   const [records, setRecords] = useState<Record[]>([]);
   const [loading, setLoading] = useState(true);
+  const [authenticated, setAuthenticated] = useState(false);
   const [viewMode, setViewMode] = useState<'cards' | 'table'>('cards');
   const router = useRouter();
 
+  const handleExport = () => {
+    // This will be handled by the RecordsTable component
+  };
+
+  useEffect(() => {
+    const checkAuth = async () => {
+      try {
+        const session = await authClient.getSession();
+        if (session) {
+          setAuthenticated(true);
+        } else {
+          router.push('/auth/sign-in');
+          return;
+        }
+      } catch (error) {
+        console.error('Auth check failed:', error);
+        router.push('/auth/sign-in');
+        return;
+      }
+    };
+
+    checkAuth();
+  }, [router]);
+
   const fetchRecords = useCallback(async () => {
+    if (!authenticated) return;
+
     try {
       const response = await fetch('/api/records');
       if (response.ok) {
@@ -51,11 +79,13 @@ export default function DashboardPage() {
     } finally {
       setLoading(false);
     }
-  }, [router]);
+  }, [router, authenticated]);
 
   useEffect(() => {
-    fetchRecords();
-  }, [fetchRecords]);
+    if (authenticated) {
+      fetchRecords();
+    }
+  }, [fetchRecords, authenticated]);
 
   const formatDate = (dateString: string) => {
     return new Date(dateString).toLocaleDateString('en-US', {
@@ -89,16 +119,12 @@ export default function DashboardPage() {
     }
   };
 
-  const handleExport = () => {
-    // This will be handled by the RecordsTable component
-  };
-
-  if (loading) {
+  if (!authenticated || loading) {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
         <div className="text-center">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto"></div>
-          <p className="mt-4 text-gray-600">Loading dashboard...</p>
+          <p className="mt-4 text-gray-600">Chargement du tableau de bord...</p>
         </div>
       </div>
     );
@@ -109,8 +135,8 @@ export default function DashboardPage() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Header */}
         <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-900">Dashboard</h1>
-          <p className="mt-2 text-gray-600">Manage your interventions and reclamations</p>
+          <h1 className="text-3xl font-bold text-gray-900">Tableau de bord</h1>
+          <p className="mt-2 text-gray-600">Gérez vos interventions et réclamations</p>
         </div>
 
         {/* View Toggle */}
@@ -121,7 +147,7 @@ export default function DashboardPage() {
             className="flex items-center gap-2"
           >
             <FileText className="w-4 h-4" />
-            Card View
+            Vue cartes
           </Button>
           <Button
             variant={viewMode === 'table' ? 'default' : 'outline'}
@@ -129,7 +155,7 @@ export default function DashboardPage() {
             className="flex items-center gap-2"
           >
             <Table className="w-4 h-4" />
-            Table View
+            Vue tableau
           </Button>
         </div>
 
@@ -141,14 +167,14 @@ export default function DashboardPage() {
                 <CardHeader className="flex flex-row items-center space-y-0 pb-2">
                   <FileText className="w-8 h-8 text-blue-600 mr-4" />
                   <div>
-                    <CardTitle className="text-lg">New Intervention</CardTitle>
-                    <CardDescription>Create a new intervention record</CardDescription>
+                    <CardTitle className="text-lg">Nouvelle intervention</CardTitle>
+                    <CardDescription>Créer une nouvelleintervention</CardDescription>
                   </div>
                 </CardHeader>
                 <CardContent>
                   <Button className="w-full">
                     <Plus className="w-4 h-4 mr-2" />
-                    Create Intervention
+                    Créer une intervention
                   </Button>
                 </CardContent>
               </Card>
@@ -157,14 +183,14 @@ export default function DashboardPage() {
                 <CardHeader className="flex flex-row items-center space-y-0 pb-2">
                   <AlertTriangle className="w-8 h-8 text-red-600 mr-4" />
                   <div>
-                    <CardTitle className="text-lg">New Reclamation</CardTitle>
-                    <CardDescription>Create a new reclamation record</CardDescription>
+                    <CardTitle className="text-lg">Nouvelle réclamation</CardTitle>
+                    <CardDescription>Créer un nouvel enregistrement de réclamation</CardDescription>
                   </div>
                 </CardHeader>
                 <CardContent>
                   <Button variant="outline" className="w-full">
                     <Plus className="w-4 h-4 mr-2" />
-                    Create Reclamation
+                    Créer une réclamation
                   </Button>
                 </CardContent>
               </Card>
@@ -172,23 +198,23 @@ export default function DashboardPage() {
 
             {/* Recent Records */}
             <div className="mb-8">
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">Recent Records</h2>
+              <h2 className="text-2xl font-bold text-gray-900 mb-4">Enregistrements récents</h2>
               {records.length === 0 ? (
                 <Card>
                   <CardContent className="flex flex-col items-center justify-center py-12">
                     <FileText className="w-12 h-12 text-gray-400 mb-4" />
-                    <h3 className="text-lg font-medium text-gray-900 mb-2">No records yet</h3>
+                    <h3 className="text-lg font-medium text-gray-900 mb-2">Aucun enregistrement pour le moment</h3>
                     <p className="text-gray-600 text-center mb-4">
-                      Create your first intervention or reclamation to get started.
+                      Créez votre première intervention ou réclamation pour commencer.&apos;
                     </p>
                     <div className="flex gap-4">
                       <Button onClick={() => router.push('/interventions/new')}>
                         <Plus className="w-4 h-4 mr-2" />
-                        New Intervention
+                        Nouvelle intervention
                       </Button>
                       <Button variant="outline" onClick={() => router.push('/reclamations/new')}>
                         <Plus className="w-4 h-4 mr-2" />
-                        New Reclamation
+                        Nouvelle réclamation
                       </Button>
                     </div>
                   </CardContent>
@@ -248,7 +274,7 @@ export default function DashboardPage() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <Card>
                 <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                  <CardTitle className="text-sm font-medium">Total Interventions</CardTitle>
+                  <CardTitle className="text-sm font-medium">Total des interventions</CardTitle>
                   <FileText className="w-4 h-4 text-blue-600" />
                 </CardHeader>
                 <CardContent>
@@ -260,7 +286,7 @@ export default function DashboardPage() {
 
               <Card>
                 <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                  <CardTitle className="text-sm font-medium">Total Reclamations</CardTitle>
+                  <CardTitle className="text-sm font-medium">Total des réclamations</CardTitle>
                   <AlertTriangle className="w-4 h-4 text-red-600" />
                 </CardHeader>
                 <CardContent>
@@ -272,7 +298,7 @@ export default function DashboardPage() {
 
               <Card>
                 <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                  <CardTitle className="text-sm font-medium">This Month</CardTitle>
+                  <CardTitle className="text-sm font-medium">Ce mois-ci</CardTitle>
                   <Calendar className="w-4 h-4 text-green-600" />
                 </CardHeader>
                 <CardContent>

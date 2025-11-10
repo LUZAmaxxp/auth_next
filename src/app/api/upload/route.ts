@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { auth } from '@/lib/auth';
 import { v2 as cloudinary } from 'cloudinary';
-import { UploadApiResponse, UploadApiError } from 'cloudinary';
+import { UploadApiResponse } from 'cloudinary';
 
 cloudinary.config({
   cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
@@ -67,7 +67,7 @@ export async function POST(request: NextRequest) {
             { quality: 'auto' }
           ]
         },
-        (error: UploadApiError | undefined, result: UploadApiResponse | undefined) => {
+        (error: Error | undefined, result: UploadApiResponse | undefined) => {
           if (error) reject(error);
           else if (result) resolve(result);
           else reject(new Error('Upload failed'));

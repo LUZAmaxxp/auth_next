@@ -8,6 +8,7 @@ import { Form } from "@core/ui/form";
 import { authClient } from "@/lib/auth-client";
 import toast from "react-hot-toast";
 import { z } from "zod";
+import { messages } from "@/config/messages";
 
 const magicLinkSchema = z.object({
   email: z.string().email("Please enter a valid email address"),
@@ -72,14 +73,13 @@ export default function MagicLinkForm() {
         </div>
         <div>
           <h3 className="text-lg font-semibold text-gray-900 mb-2">
-            Check your email
+            {messages["auth.auth-check-email"]}
           </h3>
           <p className="text-gray-600">
-            We&apos;ve sent you a magic link. Click the link in your email to
-            sign in instantly.
+            {messages["auth.auth-magic-link-sent"]}
           </p>
           <p className="text-sm text-gray-500 mt-2">
-            The link will expire in 10 minutes for security reasons.
+            {messages["auth.auth-link-expire"]}
           </p>
         </div>
         <Button
@@ -90,7 +90,7 @@ export default function MagicLinkForm() {
           }}
           className="w-full"
         >
-          Send another link
+          {messages["auth.auth-send-another"]}
         </Button>
       </div>
     );
@@ -110,11 +110,10 @@ export default function MagicLinkForm() {
         <div className="space-y-5 lg:space-y-6">
           <div>
             <h3 className="text-lg font-semibold text-gray-900 mb-2">
-              Sign in with Magic Link
+              {messages["auth.auth-sign-in-magic"]}
             </h3>
             <p className="text-sm text-gray-600">
-              Enter your email address and we&apos;ll send you a magic link to
-              sign in instantly - no password needed!
+              {messages["auth.auth-magic-description"]}
             </p>
           </div>
 
@@ -134,7 +133,7 @@ export default function MagicLinkForm() {
             size={isMedium ? "lg" : "xl"}
             isLoading={isLoading}
           >
-            Send Magic Link
+            {messages["auth.auth-send-magic"]}
           </Button>
         </div>
       )}

@@ -13,12 +13,13 @@ import { Progress } from '@/components/ui/progress';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { FileUpload } from '@/components/ui/file-upload';
 import toast, { Toaster } from 'react-hot-toast';
+import { messages } from '@/config/messages';
 
 const steps = [
-  { title: 'Basic Information', description: 'Enter the basic details of the intervention' },
-  { title: 'Team & Site', description: 'Specify team members and site information' },
-  { title: 'Photo & Recipients', description: 'Upload photo and add email recipients' },
-  { title: 'Review & Submit', description: 'Review your information and submit' },
+  { title: messages["intervention.step-basic"], description: messages["intervention.step-basic-desc"] },
+  { title: messages["intervention.step-team"], description: messages["intervention.step-team-desc"] },
+  { title: messages["intervention.step-photo"], description: messages["intervention.step-photo-desc"] },
+  { title: messages["intervention.step-review"], description: messages["intervention.step-review-desc"] },
 ];
 
 export default function NewInterventionPage() {
@@ -48,7 +49,7 @@ export default function NewInterventionPage() {
 
   const teamMembers = watch('teamMembers') || [];
   const recipientEmails = watch('recipientEmails') || [];
-  const photoUrl = watch('photoUrl');
+  const photoUrl = watch('photoUrl') || undefined;
 
   const addTeamMember = () => {
     const current = teamMembers;
@@ -129,8 +130,8 @@ export default function NewInterventionPage() {
     <div className="min-h-screen bg-gray-50 py-8">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-900">New Intervention</h1>
-          <p className="mt-2 text-gray-600">Create a new intervention record</p>
+          <h1 className="text-3xl font-bold text-gray-900">{messages["intervention.new-title"]}</h1>
+          <p className="mt-2 text-gray-600">{messages["intervention.new-subtitle"]}</p>
         </div>
 
         {/* Progress Bar */}
@@ -181,7 +182,7 @@ export default function NewInterventionPage() {
                 <div className="space-y-6">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
-                      <Label htmlFor="startDate">Start Date</Label>
+                      <Label htmlFor="startDate">{messages["form.start-date"]}</Label>
                       <Input
                         id="startDate"
                         type="date"
@@ -193,7 +194,7 @@ export default function NewInterventionPage() {
                       )}
                     </div>
                     <div>
-                      <Label htmlFor="endDate">End Date</Label>
+                      <Label htmlFor="endDate">{messages["form.end-date"]}</Label>
                       <Input
                         id="endDate"
                         type="date"
@@ -206,11 +207,11 @@ export default function NewInterventionPage() {
                     </div>
                   </div>
                   <div>
-                    <Label htmlFor="entrepriseName">Company Name</Label>
+                    <Label htmlFor="entrepriseName">{messages["form.company-name"]}</Label>
                     <Input
                       id="entrepriseName"
                       {...register('entrepriseName')}
-                      placeholder="Enter company name"
+                      placeholder="Entrez le nom de l'entreprise"
                       className={errors.entrepriseName ? 'border-red-500' : ''}
                     />
                     {errors.entrepriseName && (
@@ -218,11 +219,11 @@ export default function NewInterventionPage() {
                     )}
                   </div>
                   <div>
-                    <Label htmlFor="responsable">Responsible Person</Label>
+                    <Label htmlFor="responsable">{messages["form.responsible-person"]}</Label>
                     <Input
                       id="responsable"
                       {...register('responsable')}
-                      placeholder="Enter responsible person"
+                      placeholder="Entrez la personne responsable"
                       className={errors.responsable ? 'border-red-500' : ''}
                     />
                     {errors.responsable && (
@@ -236,13 +237,13 @@ export default function NewInterventionPage() {
               {currentStep === 2 && (
                 <div className="space-y-6">
                   <div>
-                    <Label>Team Members</Label>
+                    <Label>{messages["form.team-members"]}</Label>
                     <div className="space-y-2 mt-2">
                       {teamMembers.map((member, index) => (
                         <div key={index} className="flex gap-2">
                           <Input
                             {...register(`teamMembers.${index}` as const)}
-                            placeholder={`Team member ${index + 1}`}
+                            placeholder={`Membre d'équipe ${index + 1}`}
                             className={errors.teamMembers?.[index] ? 'border-red-500' : ''}
                           />
                           <Button
@@ -251,7 +252,7 @@ export default function NewInterventionPage() {
                             size="sm"
                             onClick={() => removeTeamMember(index)}
                           >
-                            Remove
+                            Supprimer
                           </Button>
                         </div>
                       ))}
@@ -261,7 +262,7 @@ export default function NewInterventionPage() {
                         onClick={addTeamMember}
                         className="w-full"
                       >
-                        Add Team Member
+                        {messages["form.add-team-member"]}
                       </Button>
                     </div>
                     {errors.teamMembers && (
@@ -269,11 +270,11 @@ export default function NewInterventionPage() {
                     )}
                   </div>
                   <div>
-                    <Label htmlFor="siteName">Site Name</Label>
+                    <Label htmlFor="siteName">{messages["form.site-name"]}</Label>
                     <Input
                       id="siteName"
                       {...register('siteName')}
-                      placeholder="Enter site name"
+                      placeholder="Entrez le nom du site"
                       className={errors.siteName ? 'border-red-500' : ''}
                     />
                     {errors.siteName && (
@@ -288,20 +289,20 @@ export default function NewInterventionPage() {
                 <div className="space-y-6">
                   <FileUpload
                     onFileSelect={() => {}}
-                    onUrlChange={(url) => setValue('photoUrl', url)}
+                    onUrlChange={(url: string | null) => setValue('photoUrl', url || undefined)}
                     currentUrl={photoUrl}
-                    label="Photo (Optional)"
+                    label={messages["form.photo-optional"]}
                     error={errors.photoUrl?.message}
                   />
                   <div>
-                    <Label>Recipient Emails</Label>
+                    <Label>{messages["form.recipient-emails"]}</Label>
                     <div className="space-y-2 mt-2">
                       {recipientEmails.map((email, index) => (
                         <div key={index} className="flex gap-2">
                           <Input
                             type="email"
                             {...register(`recipientEmails.${index}` as const)}
-                            placeholder={`recipient${index + 1}@example.com`}
+                            placeholder={`destinataire${index + 1}@exemple.com`}
                             className={errors.recipientEmails?.[index] ? 'border-red-500' : ''}
                           />
                           <Button
@@ -310,7 +311,7 @@ export default function NewInterventionPage() {
                             size="sm"
                             onClick={() => removeRecipientEmail(index)}
                           >
-                            Remove
+                            Supprimer
                           </Button>
                         </div>
                       ))}
@@ -320,7 +321,7 @@ export default function NewInterventionPage() {
                         onClick={addRecipientEmail}
                         className="w-full"
                       >
-                        Add Recipient Email
+                        {messages["form.add-recipient"]}
                       </Button>
                     </div>
                     {errors.recipientEmails && (
