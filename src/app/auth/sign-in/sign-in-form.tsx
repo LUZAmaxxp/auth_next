@@ -40,8 +40,6 @@ export default function SignInForm() {
       });
 
       if (error) {
-        console.error("Sign-in error:", error);
-
         let errorMessage = "Failed to sign in. Please try again.";
 
         if (
