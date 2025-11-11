@@ -13,20 +13,21 @@ import { Progress } from '@/components/ui/progress';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { FileUpload } from '@/components/ui/file-upload';
 import toast, { Toaster } from 'react-hot-toast';
-import { messages } from '@/config/messages';
+import { useTranslation } from '@/lib/i18n-context';
 import SidebarMenu from '@/components/sidebar-menu';
-
-const steps = [
-  { title: messages["intervention.step-basic"], description: messages["intervention.step-basic-desc"] },
-  { title: messages["intervention.step-team"], description: messages["intervention.step-team-desc"] },
-  { title: messages["intervention.step-photo"], description: messages["intervention.step-photo-desc"] },
-  { title: messages["intervention.step-review"], description: messages["intervention.step-review-desc"] },
-];
 
 export default function NewInterventionPage() {
   const [currentStep, setCurrentStep] = useState(1);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const router = useRouter();
+  const { t } = useTranslation();
+
+  const steps = [
+    { title: t("intervention.step-basic"), description: t("intervention.step-basic-desc") },
+    { title: t("intervention.step-team"), description: t("intervention.step-team-desc") },
+    { title: t("intervention.step-photo"), description: t("intervention.step-photo-desc") },
+    { title: t("intervention.step-review"), description: t("intervention.step-review-desc") },
+  ];
 
   const {
     register,
@@ -133,8 +134,8 @@ export default function NewInterventionPage() {
       <div className="flex-1 py-8">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-8">
-            <h1 className="text-3xl font-bold text-gray-900">{messages["intervention.new-title"]}</h1>
-            <p className="mt-2 text-gray-600">{messages["intervention.new-subtitle"]}</p>
+            <h1 className="text-3xl font-bold text-gray-900">{t("intervention.new-title")}</h1>
+            <p className="mt-2 text-gray-600">{t("intervention.new-subtitle")}</p>
           </div>
 
           {/* Progress Bar */}
@@ -185,7 +186,7 @@ export default function NewInterventionPage() {
                   <div className="space-y-6">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <div>
-                        <Label htmlFor="startDate">{messages["form.start-date"]}</Label>
+                        <Label htmlFor="startDate">{t("form.start-date")}</Label>
                         <Input
                           id="startDate"
                           type="date"
@@ -197,7 +198,7 @@ export default function NewInterventionPage() {
                         )}
                       </div>
                       <div>
-                        <Label htmlFor="endDate">{messages["form.end-date"]}</Label>
+                        <Label htmlFor="endDate">{t("form.end-date")}</Label>
                         <Input
                           id="endDate"
                           type="date"
@@ -210,11 +211,11 @@ export default function NewInterventionPage() {
                       </div>
                     </div>
                     <div>
-                      <Label htmlFor="entrepriseName">{messages["form.company-name"]}</Label>
+                      <Label htmlFor="entrepriseName">{t("form.company-name")}</Label>
                       <Input
                         id="entrepriseName"
                         {...register('entrepriseName')}
-                        placeholder="Entrez le nom de l'entreprise"
+                        placeholder={t("form.company-name-placeholder")}
                         className={errors.entrepriseName ? 'border-red-500' : ''}
                       />
                       {errors.entrepriseName && (
@@ -222,11 +223,11 @@ export default function NewInterventionPage() {
                       )}
                     </div>
                     <div>
-                      <Label htmlFor="responsable">{messages["form.responsible-person"]}</Label>
+                      <Label htmlFor="responsable">{t("form.responsible-person")}</Label>
                       <Input
                         id="responsable"
                         {...register('responsable')}
-                        placeholder="Entrez la personne responsable"
+                        placeholder={t("form.responsible-person-placeholder")}
                         className={errors.responsable ? 'border-red-500' : ''}
                       />
                       {errors.responsable && (
@@ -240,13 +241,13 @@ export default function NewInterventionPage() {
                 {currentStep === 2 && (
                   <div className="space-y-6">
                     <div>
-                      <Label>{messages["form.team-members"]}</Label>
+                      <Label>{t("form.team-members")}</Label>
                       <div className="space-y-2 mt-2">
                         {teamMembers.map((member, index) => (
                           <div key={index} className="flex gap-2">
                             <Input
                               {...register(`teamMembers.${index}` as const)}
-                              placeholder={`Membre d'équipe ${index + 1}`}
+                              placeholder={`${t("form.team-member")} ${index + 1}`}
                               className={errors.teamMembers?.[index] ? 'border-red-500' : ''}
                             />
                             <Button
@@ -255,7 +256,7 @@ export default function NewInterventionPage() {
                               size="sm"
                               onClick={() => removeTeamMember(index)}
                             >
-                              Supprimer
+                              {t("form.remove")}
                             </Button>
                           </div>
                         ))}
@@ -265,7 +266,7 @@ export default function NewInterventionPage() {
                           onClick={addTeamMember}
                           className="w-full"
                         >
-                          {messages["form.add-team-member"]}
+                          {t("form.add-team-member")}
                         </Button>
                       </div>
                       {errors.teamMembers && (
@@ -273,11 +274,11 @@ export default function NewInterventionPage() {
                       )}
                     </div>
                     <div>
-                      <Label htmlFor="siteName">{messages["form.site-name"]}</Label>
+                      <Label htmlFor="siteName">{t("form.site-name")}</Label>
                       <Input
                         id="siteName"
                         {...register('siteName')}
-                        placeholder="Entrez le nom du site"
+                        placeholder={t("form.site-name-placeholder")}
                         className={errors.siteName ? 'border-red-500' : ''}
                       />
                       {errors.siteName && (
@@ -294,18 +295,18 @@ export default function NewInterventionPage() {
                       onFileSelect={() => {}}
                       onUrlChange={(url: string | null) => setValue('photoUrl', url || undefined)}
                       currentUrl={photoUrl}
-                      label={messages["form.photo-optional"]}
+                      label={t("form.photo-optional")}
                       error={errors.photoUrl?.message}
                     />
                     <div>
-                      <Label>{messages["form.recipient-emails"]}</Label>
+                      <Label>{t("form.recipient-emails")}</Label>
                       <div className="space-y-2 mt-2">
                         {recipientEmails.map((email, index) => (
                           <div key={index} className="flex gap-2">
                             <Input
                               type="email"
                               {...register(`recipientEmails.${index}` as const)}
-                              placeholder={`destinataire${index + 1}@exemple.com`}
+                              placeholder={`${t("form.recipient")} ${index + 1}@example.com`}
                               className={errors.recipientEmails?.[index] ? 'border-red-500' : ''}
                             />
                             <Button
@@ -314,7 +315,7 @@ export default function NewInterventionPage() {
                               size="sm"
                               onClick={() => removeRecipientEmail(index)}
                             >
-                              Supprimer
+                              {t("form.remove")}
                             </Button>
                           </div>
                         ))}
@@ -324,7 +325,7 @@ export default function NewInterventionPage() {
                           onClick={addRecipientEmail}
                           className="w-full"
                         >
-                          {messages["form.add-recipient"]}
+                          {t("form.add-recipient")}
                         </Button>
                       </div>
                       {errors.recipientEmails && (
@@ -338,48 +339,48 @@ export default function NewInterventionPage() {
                 {currentStep === 4 && (
                   <div className="space-y-6">
                     <div className="bg-gray-50 p-6 rounded-lg">
-                      <h3 className="text-lg font-semibold mb-4">Review Your Information</h3>
+                      <h3 className="text-lg font-semibold mb-4">{t("intervention.review-title")}</h3>
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div>
-                          <h4 className="font-medium text-gray-900">Basic Information</h4>
+                          <h4 className="font-medium text-gray-900">{t("intervention.basic-info")}</h4>
                           <dl className="mt-2 space-y-1">
                             <div>
-                              <dt className="text-sm text-gray-500">Start Date:</dt>
+                              <dt className="text-sm text-gray-500">{t("intervention.start-date-label")}</dt>
                               <dd className="text-sm text-gray-900">{watch('startDate')}</dd>
                             </div>
                             <div>
-                              <dt className="text-sm text-gray-500">End Date:</dt>
+                              <dt className="text-sm text-gray-500">{t("intervention.end-date-label")}</dt>
                               <dd className="text-sm text-gray-900">{watch('endDate')}</dd>
                             </div>
                             <div>
-                              <dt className="text-sm text-gray-500">Company:</dt>
+                              <dt className="text-sm text-gray-500">{t("intervention.company-label")}</dt>
                               <dd className="text-sm text-gray-900">{watch('entrepriseName')}</dd>
                             </div>
                             <div>
-                              <dt className="text-sm text-gray-500">Responsible:</dt>
+                              <dt className="text-sm text-gray-500">{t("intervention.responsible-label")}</dt>
                               <dd className="text-sm text-gray-900">{watch('responsable')}</dd>
                             </div>
                           </dl>
                         </div>
                         <div>
-                          <h4 className="font-medium text-gray-900">Team & Site</h4>
+                          <h4 className="font-medium text-gray-900">{t("intervention.team-site")}</h4>
                           <dl className="mt-2 space-y-1">
                             <div>
-                              <dt className="text-sm text-gray-500">Site:</dt>
+                              <dt className="text-sm text-gray-500">{t("intervention.site-label")}</dt>
                               <dd className="text-sm text-gray-900">{watch('siteName')}</dd>
                             </div>
                             <div>
-                              <dt className="text-sm text-gray-500">Team Members:</dt>
+                              <dt className="text-sm text-gray-500">{t("intervention.team-members-label")}</dt>
                               <dd className="text-sm text-gray-900">{teamMembers.join(', ')}</dd>
                             </div>
                             <div>
-                              <dt className="text-sm text-gray-500">Recipients:</dt>
+                              <dt className="text-sm text-gray-500">{t("intervention.recipients-label")}</dt>
                               <dd className="text-sm text-gray-900">{recipientEmails.join(', ')}</dd>
                             </div>
                             {photoUrl && (
                               <div>
-                                <dt className="text-sm text-gray-500">Photo:</dt>
-                                <dd className="text-sm text-gray-900">Uploaded</dd>
+                                <dt className="text-sm text-gray-500">{t("intervention.photo-label")}</dt>
+                                <dd className="text-sm text-gray-900">{t("intervention.uploaded")}</dd>
                               </div>
                             )}
                           </dl>
@@ -398,17 +399,17 @@ export default function NewInterventionPage() {
                     disabled={currentStep === 1}
                   >
                     <ChevronLeft className="w-4 h-4 mr-2" />
-                    Previous
+                    {t("intervention.previous")}
                   </Button>
 
                   {currentStep < steps.length ? (
                     <Button type="button" onClick={nextStep}>
-                      Next
+                      {t("intervention.next")}
                       <ChevronRight className="w-4 h-4 ml-2" />
                     </Button>
                   ) : (
                     <Button type="submit" disabled={isSubmitting}>
-                      {isSubmitting ? 'Submitting...' : 'Submit Intervention'}
+                      {isSubmitting ? t("intervention.submitting") : t("intervention.submit-intervention")}
                     </Button>
                   )}
                 </div>

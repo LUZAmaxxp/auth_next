@@ -1,4 +1,10 @@
-- [x] Import SidebarMenu component in src/app/reclamations/new/page.tsx
-- [x] Change outer div class from "min-h-screen bg-gray-50 py-8" to "min-h-screen bg-gray-50 flex"
-- [x] Add <SidebarMenu /> component after the opening div
-- [x] Wrap the main content in <div className="flex-1 py-8"><div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8"> and adjust closing divs
+# TODO: Modify DOCX File Format
+
+- [x] Import fs module for reading logo file
+- [x] Add function to fetch logo buffer from public/LOGO-SOUSS-MASSA-1033x308px-removebg-preview.png
+- [x] Remove "UTILITY FIRM" header from document
+- [x] Add logo image paragraph at top left of document
+- [x] Center the title ("Intervention" or "Reclamation") below the logo
+- [x] Add "ID:" row at the top of the details table using _id
+- [x] Update report titles to "Intervention" and "Reclamation" (remove "Report")
+- [x] Test the export functionality to ensure DOCX generates correctly

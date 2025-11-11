@@ -4,10 +4,12 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { authClient } from '@/lib/auth-client';
+import { useTranslation } from '@/lib/i18n-context';
 
 export default function Home() {
   const { data: session, isPending: loading } = authClient.useSession();
   const isAuthenticated = !!session;
+  const { t } = useTranslation();
 
   if (loading) {
     return (
@@ -35,15 +37,15 @@ export default function Home() {
             <div className="flex items-center space-x-4">
               {isAuthenticated ? (
                 <Link href="/dashboard">
-                  <Button>Accéder au Dashboard</Button>
+                  <Button>{t('landing.hero.accessDashboard')}</Button>
                 </Link>
               ) : (
                 <>
                   <Link href="/auth/sign-in">
-                    <Button variant="outline">Se Connecter</Button>
+                    <Button variant="outline">{t('landing.hero.signIn')}</Button>
                   </Link>
                   <Link href="/auth/sign-up">
-                    <Button>Créer un Compte</Button>
+                    <Button>{t('landing.hero.createAccount')}</Button>
                   </Link>
                 </>
               )}
@@ -57,31 +59,29 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
           <div className="text-center">
             <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
-              Société Régionale Multiservices
-              <span className="block text-blue-600">SOUSS MASSA</span>
+              {t('landing.hero.title')}
+              <span className="block text-blue-600">{t('landing.hero.subtitle')}</span>
             </h1>
             <p className="text-xl md:text-2xl text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed">
-              Votre partenaire de confiance pour les services multisectoriels en région Souss-Massa.
-              Nous offrons des solutions complètes en interventions techniques, maintenance industrielle,
-              et gestion des réclamations pour assurer l&apos;excellence opérationnelle de vos installations.
+              {t('landing.hero.description')}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               {isAuthenticated ? (
                 <Link href="/dashboard">
                   <Button size="lg" className="text-lg px-8 py-3">
-                    Accéder au Dashboard
+                    {t('landing.hero.accessDashboard')}
                   </Button>
                 </Link>
               ) : (
                 <>
                   <Link href="/auth/sign-up">
                     <Button size="lg" className="text-lg px-8 py-3">
-                      Créer un Compte
+                      {t('landing.hero.createAccount')}
                     </Button>
                   </Link>
                   <Link href="/auth/sign-in">
                     <Button size="lg" variant="outline" className="text-lg px-8 py-3">
-                      Se Connecter
+                      {t('landing.hero.signIn')}
                     </Button>
                   </Link>
                 </>
@@ -97,9 +97,9 @@ export default function Home() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                 </svg>
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">Interventions Techniques</h3>
+              <h3 className="text-xl font-semibold text-gray-900 mb-2">{t('landing.features.interventions.title')}</h3>
               <p className="text-gray-600">
-                Gestion complète des interventions de maintenance et réparation pour vos équipements industriels.
+                {t('landing.features.interventions.description')}
               </p>
             </div>
 
@@ -109,9 +109,9 @@ export default function Home() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z" />
                 </svg>
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">Gestion des Réclamations</h3>
+              <h3 className="text-xl font-semibold text-gray-900 mb-2">{t('landing.features.reclamations.title')}</h3>
               <p className="text-gray-600">
-                Traitement efficace des réclamations et problèmes signalés pour une résolution rapide.
+                {t('landing.features.reclamations.description')}
               </p>
             </div>
 
@@ -121,9 +121,9 @@ export default function Home() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                 </svg>
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">Rapports Détaillés</h3>
+              <h3 className="text-xl font-semibold text-gray-900 mb-2">{t('landing.features.reports.title')}</h3>
               <p className="text-gray-600">
-                Génération automatique de rapports DOCX et Excel pour un suivi transparent de toutes les opérations.
+                {t('landing.features.reports.description')}
               </p>
             </div>
           </div>
@@ -141,7 +141,7 @@ export default function Home() {
             className="h-9 w-auto mx-auto mb-4"
           />
           <p className="text-gray-400">
-            © 2024 Société Régionale Multiservices SOUSS MASSA. Tous droits réservés. Made By Ayman ALLOUCH
+            {t('landing.footer.copyright')}
           </p>
         </div>
       </footer>

@@ -41,14 +41,14 @@ export const auth = betterAuth({
         await transporter.sendMail({
           from: MAIL.from || "no_reply@notify.srm-sm.io",
           to: email,
-          subject: `TEI - Magic Link Sign In (${dateString} at ${timeString})`,
+          subject: `SRM-SM - Magic Link Sign In (${dateString} at ${timeString})`,
           html: `
             <!DOCTYPE html>
             <html>
             <head>
               <meta charset="utf-8">
               <meta name="viewport" content="width=device-width, initial-scale=1.0">
-              <title>Magic Link Sign In - TEI</title>
+              <title>Magic Link Sign In - SRM-SM</title>
             </head>
             <body style="margin:0;padding:0;background-color:#ffffff;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;">
               <div style="max-width:600px;margin:0 auto;background:#ffffff;border:1px solid rgba(0,0,0,0.1);">
@@ -249,7 +249,7 @@ export const auth = betterAuth({
       await transporter.sendMail({
         from: MAIL.from || "no_reply@notify.SRM-SM.io",
         to: user.email as string,
-        subject: "Welcome to TEI - Verify Your Email Address",
+        subject: "Welcome to SRM-SM - Verify Your Email Address",
         text: `
 Welcome to Sociéte Regionale Multiservices - SOUSS MASSA!
 
@@ -279,15 +279,15 @@ Need help? Contact us at  allouchayman21@gmail.com
           <head>
             <meta charset="utf-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>Welcome to TEI</title>
+            <title>Welcome to SRM-SM</title>
           </head>
           <body style="margin:0;padding:0;background-color:#ffffff;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;">
             <div style="max-width:600px;margin:0 auto;background:#ffffff;border:1px solid rgba(0,0,0,0.1);">
               <!-- Header -->
               <div style="background:#ffffff;padding:40px 32px;text-align:center;border-bottom:1px solid rgba(0,0,0,0.1);">
                 <img src="${url.split("/api")[0]}/TEIlogo.png" alt="SRM-SM" style="width:120px;height:auto;margin-bottom:24px;" />
-                <h1 style="color:#333333;margin:0;font-size:28px;font-weight:700;letter-spacing:-0.5px;">Welcome to TEI!</h1>
-                <p style="color:#666666;margin:12px 0 0 0;font-size:16px;">Advancing research and innovation in tokenization for development finance</p>
+                <h1 style="color:#333333;margin:0;font-size:28px;font-weight:700;letter-spacing:-0.5px;">Welcome to SRM-SM!</h1>
+                <p style="color:#666666;margin:12px 0 0 0;font-size:16px;">Sociéte Regionale Multiservices - SOUSS MASSA</p>
               </div>
               
               <!-- Content -->

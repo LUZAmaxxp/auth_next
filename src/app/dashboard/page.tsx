@@ -9,6 +9,7 @@ import toast, { Toaster } from 'react-hot-toast';
 import RecordsTable from '@/components/records-table';
 import SidebarMenu from '@/components/sidebar-menu';
 import { authClient } from '@/lib/auth-client';
+import { useTranslation } from '@/lib/i18n-context';
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -44,6 +45,7 @@ export default function DashboardPage() {
   const [authenticated, setAuthenticated] = useState(false);
   const [activeSection, setActiveSection] = useState<'overview' | 'interventions' | 'reclamations' | 'records'>('overview');
   const router = useRouter();
+  const { t } = useTranslation();
 
   const handleExport = () => {
     // This will be handled by the RecordsTable component
@@ -80,15 +82,15 @@ export default function DashboardPage() {
       } else if (response.status === 401) {
         router.push('/auth/sign-in');
       } else {
-        toast.error('Failed to fetch records');
+        toast.error(t('dashboard.errors.fetchFailed'));
       }
     } catch (error) {
       console.error('Error fetching records:', error);
-      toast.error('An error occurred while fetching records');
+      toast.error(t('dashboard.errors.fetchError'));
     } finally {
       setLoading(false);
     }
-  }, [router, authenticated]);
+  }, [router, authenticated, t]);
 
   useEffect(() => {
     if (authenticated) {
@@ -133,7 +135,7 @@ export default function DashboardPage() {
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
         <div className="text-center">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto"></div>
-          <p className="mt-4 text-gray-600">Chargement du tableau de bord...</p>
+          <p className="mt-4 text-gray-600">{t('dashboard.loading')}</p>
         </div>
       </div>
     );
@@ -148,8 +150,8 @@ export default function DashboardPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           {/* Header */}
           <div className="mb-8">
-            <h1 className="text-3xl font-bold text-gray-900">Tableau de bord</h1>
-            <p className="mt-2 text-gray-600">Gérez vos interventions et réclamations</p>
+            <h1 className="text-3xl font-bold text-gray-900">{t('dashboard.title')}</h1>
+            <p className="mt-2 text-gray-600">{t('dashboard.subtitle')}</p>
           </div>
 
           {/* Breadcrumb Navigation */}
@@ -161,7 +163,7 @@ export default function DashboardPage() {
                     onClick={() => setActiveSection('overview')}
                     className={activeSection === 'overview' ? 'font-semibold' : 'cursor-pointer'}
                   >
-                    Aperçu
+                    {t('dashboard.breadcrumb.overview')}
                   </BreadcrumbLink>
                 </BreadcrumbItem>
                 <BreadcrumbSeparator />
@@ -170,7 +172,7 @@ export default function DashboardPage() {
                     onClick={() => setActiveSection('interventions')}
                     className={activeSection === 'interventions' ? 'font-semibold' : 'cursor-pointer'}
                   >
-                    Interventions
+                    {t('dashboard.breadcrumb.interventions')}
                   </BreadcrumbLink>
                 </BreadcrumbItem>
                 <BreadcrumbSeparator />
@@ -179,7 +181,7 @@ export default function DashboardPage() {
                     onClick={() => setActiveSection('reclamations')}
                     className={activeSection === 'reclamations' ? 'font-semibold' : 'cursor-pointer'}
                   >
-                    Réclamations
+                    {t('dashboard.breadcrumb.reclamations')}
                   </BreadcrumbLink>
                 </BreadcrumbItem>
                 <BreadcrumbSeparator />
@@ -188,20 +190,20 @@ export default function DashboardPage() {
                     onClick={() => setActiveSection('records')}
                     className={activeSection === 'records' ? 'font-semibold cursor-pointer' : 'cursor-pointer'}
                   >
-                    Tous les enregistrements
+                    {t('dashboard.breadcrumb.allRecords')}
                   </BreadcrumbPage>
                 </BreadcrumbItem>
               </BreadcrumbList>
             </Breadcrumb>
           </div>
 
-        {activeSection === 'overview' && (
+          {activeSection === 'overview' && (
           <>
             {/* Stats */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
               <Card>
                 <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                  <CardTitle className="text-sm font-medium">Total des interventions</CardTitle>
+                  <CardTitle className="text-sm font-medium">{t('dashboard.stats.totalInterventions')}</CardTitle>
                   <FileText className="w-4 h-4 text-blue-600" />
                 </CardHeader>
                 <CardContent>
@@ -213,7 +215,7 @@ export default function DashboardPage() {
 
               <Card>
                 <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                  <CardTitle className="text-sm font-medium">Total des réclamations</CardTitle>
+                  <CardTitle className="text-sm font-medium">{t('dashboard.stats.totalReclamations')}</CardTitle>
                   <AlertTriangle className="w-4 h-4 text-red-600" />
                 </CardHeader>
                 <CardContent>
@@ -225,7 +227,7 @@ export default function DashboardPage() {
 
               <Card>
                 <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                  <CardTitle className="text-sm font-medium">Ce mois-ci</CardTitle>
+                  <CardTitle className="text-sm font-medium">{t('dashboard.stats.thisMonth')}</CardTitle>
                   <Calendar className="w-4 h-4 text-green-600" />
                 </CardHeader>
                 <CardContent>
@@ -247,14 +249,14 @@ export default function DashboardPage() {
                 <CardHeader className="flex flex-row items-center space-y-0 pb-2">
                   <FileText className="w-8 h-8 text-blue-600 mr-4" />
                   <div>
-                    <CardTitle className="text-lg">Nouvelle intervention</CardTitle>
-                    <CardDescription>Créer une nouvelle intervention</CardDescription>
+                    <CardTitle className="text-lg">{t('dashboard.actions.newIntervention')}</CardTitle>
+                    <CardDescription>{t('dashboard.actions.newInterventionDesc')}</CardDescription>
                   </div>
                 </CardHeader>
                 <CardContent>
                   <Button className="w-full">
                     <Plus className="w-4 h-4 mr-2" />
-                    Créer une intervention
+                    {t('dashboard.actions.createIntervention')}
                   </Button>
                 </CardContent>
               </Card>
@@ -263,14 +265,14 @@ export default function DashboardPage() {
                 <CardHeader className="flex flex-row items-center space-y-0 pb-2">
                   <AlertTriangle className="w-8 h-8 text-red-600 mr-4" />
                   <div>
-                    <CardTitle className="text-lg">Nouvelle réclamation</CardTitle>
-                    <CardDescription>Créer un nouvel enregistrement de réclamation</CardDescription>
+                    <CardTitle className="text-lg">{t('dashboard.actions.newReclamation')}</CardTitle>
+                    <CardDescription>{t('dashboard.actions.newReclamationDesc')}</CardDescription>
                   </div>
                 </CardHeader>
                 <CardContent>
                   <Button variant="outline" className="w-full">
                     <Plus className="w-4 h-4 mr-2" />
-                    Créer une réclamation
+                    {t('dashboard.actions.createReclamation')}
                   </Button>
                 </CardContent>
               </Card>
@@ -278,23 +280,23 @@ export default function DashboardPage() {
 
             {/* Recent Records */}
             <div className="mb-8">
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">Enregistrements récents</h2>
+              <h2 className="text-2xl font-bold text-gray-900 mb-4">{t('dashboard.recentRecords.title')}</h2>
               {records.length === 0 ? (
                 <Card>
                   <CardContent className="flex flex-col items-center justify-center py-12">
                     <FileText className="w-12 h-12 text-gray-400 mb-4" />
-                    <h3 className="text-lg font-medium text-gray-900 mb-2">Aucun enregistrement pour le moment</h3>
+                    <h3 className="text-lg font-medium text-gray-900 mb-2">{t('dashboard.recentRecords.noRecords')}</h3>
                     <p className="text-gray-600 text-center mb-4">
-                      Créez votre première intervention ou réclamation pour commencer.&apos;
+                      {t('dashboard.recentRecords.noRecordsDesc')}
                     </p>
                     <div className="flex gap-4">
                       <Button onClick={() => router.push('/interventions/new')}>
                         <Plus className="w-4 h-4 mr-2" />
-                        Nouvelle intervention
+                        {t('dashboard.actions.newIntervention')}
                       </Button>
                       <Button variant="outline" onClick={() => router.push('/reclamations/new')}>
                         <Plus className="w-4 h-4 mr-2" />
-                        Nouvelle réclamation
+                        {t('dashboard.actions.newReclamation')}
                       </Button>
                     </div>
                   </CardContent>
@@ -328,7 +330,7 @@ export default function DashboardPage() {
                           {record.type === 'intervention' && record.teamMembers && (
                             <div className="flex items-center text-sm text-gray-600">
                               <Users className="w-4 h-4 mr-2" />
-                              {record.teamMembers.length} team member{record.teamMembers.length !== 1 ? 's' : ''}
+                              {`${record.teamMembers.length} ${t('dashboard.recentRecords.teamMembers', { count: record.teamMembers.length.toString() })}`}
                             </div>
                           )}
                           {record.type === 'intervention' && record.siteName && (
@@ -354,18 +356,18 @@ export default function DashboardPage() {
 
         {activeSection === 'interventions' && (
           <div>
-            <h2 className="text-2xl font-bold text-gray-900 mb-4">Toutes les interventions</h2>
+            <h2 className="text-2xl font-bold text-gray-900 mb-4">{t('dashboard.sections.allInterventions')}</h2>
             {records.filter(r => r.type === 'intervention').length === 0 ? (
               <Card>
                 <CardContent className="flex flex-col items-center justify-center py-12">
                   <FileText className="w-12 h-12 text-gray-400 mb-4" />
-                  <h3 className="text-lg font-medium text-gray-900 mb-2">Aucune intervention trouvée</h3>
+                  <h3 className="text-lg font-medium text-gray-900 mb-2">{t('dashboard.sections.noInterventions')}</h3>
                   <p className="text-gray-600 text-center mb-4">
-                    Créez votre première intervention pour commencer.
+                    {t('dashboard.sections.noInterventionsDesc')}
                   </p>
                   <Button onClick={() => router.push('/interventions/new')}>
                     <Plus className="w-4 h-4 mr-2" />
-                    Nouvelle intervention
+                    {t('dashboard.actions.newIntervention')}
                   </Button>
                 </CardContent>
               </Card>
@@ -398,7 +400,7 @@ export default function DashboardPage() {
                         {record.teamMembers && (
                           <div className="flex items-center text-sm text-gray-600">
                             <Users className="w-4 h-4 mr-2" />
-                            {record.teamMembers.length} team member{record.teamMembers.length !== 1 ? 's' : ''}
+                            {record.teamMembers.length} {t('dashboard.recentRecords.teamMembers', { count: record.teamMembers.length.toString() })}
                           </div>
                         )}
                         {record.siteName && (
@@ -418,18 +420,18 @@ export default function DashboardPage() {
 
         {activeSection === 'reclamations' && (
           <div>
-            <h2 className="text-2xl font-bold text-gray-900 mb-4">Toutes les réclamations</h2>
+            <h2 className="text-2xl font-bold text-gray-900 mb-4">{t('dashboard.sections.allReclamations')}</h2>
             {records.filter(r => r.type === 'reclamation').length === 0 ? (
               <Card>
                 <CardContent className="flex flex-col items-center justify-center py-12">
                   <AlertTriangle className="w-12 h-12 text-gray-400 mb-4" />
-                  <h3 className="text-lg font-medium text-gray-900 mb-2">Aucune réclamation trouvée</h3>
+                  <h3 className="text-lg font-medium text-gray-900 mb-2">{t('dashboard.sections.noReclamations')}</h3>
                   <p className="text-gray-600 text-center mb-4">
-                    Créez votre première réclamation pour commencer.
+                    {t('dashboard.sections.noReclamationsDesc')}
                   </p>
                   <Button onClick={() => router.push('/reclamations/new')}>
                     <Plus className="w-4 h-4 mr-2" />
-                    Nouvelle réclamation
+                    {t('dashboard.actions.newReclamation')}
                   </Button>
                 </CardContent>
               </Card>

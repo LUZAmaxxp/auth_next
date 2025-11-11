@@ -95,9 +95,60 @@ const ReclamationSchema = new mongoose.Schema({
   }
 });
 
+// User Settings Schema
+const UserSettingsSchema = new mongoose.Schema({
+  userId: {
+    type: mongoose.Schema.Types.ObjectId,
+    required: true,
+    ref: 'User', // Reference to BetterAuth User
+    unique: true
+  },
+  notifications: {
+    emailNotifications: {
+      type: Boolean,
+      default: true
+    },
+    pushNotifications: {
+      type: Boolean,
+      default: false
+    },
+    weeklyReports: {
+      type: Boolean,
+      default: true
+    }
+  },
+  appearance: {
+    darkMode: {
+      type: Boolean,
+      default: false
+    },
+    compactView: {
+      type: Boolean,
+      default: false
+    }
+  },
+  language: {
+    type: String,
+    default: 'en-US'
+  },
+  timezone: {
+    type: String,
+    default: 'UTC-5'
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now
+  },
+  updatedAt: {
+    type: Date,
+    default: Date.now
+  }
+});
+
 // Create models if they don't exist
 export const Intervention = mongoose.models.Intervention || mongoose.model('Intervention', InterventionSchema);
 export const Reclamation = mongoose.models.Reclamation || mongoose.model('Reclamation', ReclamationSchema);
+export const UserSettings = mongoose.models.UserSettings || mongoose.model('UserSettings', UserSettingsSchema);
 
 // Type definitions
 export interface IIntervention {
@@ -126,4 +177,22 @@ export interface IReclamation {
   photoUrl?: string;
   recipientEmails: string[];
   createdAt: Date;
+}
+
+export interface IUserSettings {
+  _id: string;
+  userId: string;
+  notifications: {
+    emailNotifications: boolean;
+    pushNotifications: boolean;
+    weeklyReports: boolean;
+  };
+  appearance: {
+    darkMode: boolean;
+    compactView: boolean;
+  };
+  language: string;
+  timezone: string;
+  createdAt: Date;
+  updatedAt: Date;
 }

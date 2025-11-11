@@ -39,6 +39,7 @@
     "mongoose": "^8.19.3",
     "next": "15.2.4",
     "next-cloudinary": "^6.17.4",
+    "next-intl": "^4.5.0",
     "node-fetch": "^3.3.2",
     "nodemailer": "^6.10.1",
     "react": "19.0.0",
