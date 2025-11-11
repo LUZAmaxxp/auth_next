@@ -197,7 +197,7 @@ function createLogoParagraph(): Paragraph {
 async function generateReportDoc(
   data: BaseReportData & { type: string; typeValue: string },
   reportTitle: string | string[],
-  includeDescriptionHeader: boolean = true
+
 ): Promise<Buffer> {
   let photoBuffer: Buffer | null = null;
 
