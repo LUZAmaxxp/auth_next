@@ -2,6 +2,7 @@
 
 import { createContext, useContext, useEffect, useState } from 'react';
 import { Locale } from './i18n-client';
+import { authClient } from '@/lib/auth-client';
 
 interface I18nContextType {
   locale: Locale;
@@ -11,8 +12,32 @@ interface I18nContextType {
 
 const I18nContext = createContext<I18nContextType | undefined>(undefined);
 
-export function I18nProvider({ children, initialLocale = 'en' as Locale }: { children: React.ReactNode; initialLocale?: Locale }) {
-  const [locale, setLocaleState] = useState<Locale>(initialLocale);
+export function I18nProvider({ children, initialLocale = 'fr' as Locale }: { children: React.ReactNode; initialLocale?: Locale }) {
+  // Load initial locale from localStorage with preference for user-settings language
+  const getInitialLocale = (): Locale => {
+    if (typeof window !== 'undefined') {
+      try {
+        const settingsRaw = localStorage.getItem('user-settings');
+        if (settingsRaw) {
+          const settings = JSON.parse(settingsRaw);
+          const lang = settings?.language;
+          if (lang && ['en', 'fr', 'es', 'ar'].includes(lang)) {
+            return lang as Locale;
+          }
+        }
+      } catch {
+        // ignore JSON parsing errors
+      }
+
+      const stored = localStorage.getItem('locale');
+      if (stored && ['en', 'fr', 'es', 'ar'].includes(stored)) {
+        return stored as Locale;
+      }
+    }
+    return initialLocale;
+  };
+
+  const [locale, setLocaleState] = useState<Locale>(getInitialLocale);
   const [messages, setMessages] = useState<Record<string, string>>({});
 
   const setLocale = async (newLocale: Locale) => {
@@ -47,6 +72,25 @@ export function I18nProvider({ children, initialLocale = 'en' as Locale }: { chi
 
     loadInitialMessages();
   }, [locale]);
+
+  // Enforce French for guests (no session)
+  const { data: session } = authClient.useSession();
+  useEffect(() => {
+    if (!session && locale !== 'fr') {
+      // Force French and clear persisted custom locale
+      setLocale('fr');
+      try {
+        localStorage.removeItem('locale');
+        const settingsRaw = localStorage.getItem('user-settings');
+        if (settingsRaw) {
+          const settings = JSON.parse(settingsRaw);
+          localStorage.setItem('user-settings', JSON.stringify({ ...settings, language: 'fr' }));
+        }
+      } catch {
+        // ignore storage errors
+      }
+    }
+  }, [session]);
 
   return (
     <I18nContext.Provider value={{ locale, setLocale, messages }}>

@@ -241,5 +241,48 @@
     "description": "Description",
     "description-placeholder": "Describe the issue in detail",
     "add-recipient-email": "Add Recipient Email"
+  },
+  "sign-up": {
+    "success": "Account created successfully! Please check your email to verify your account.",
+    "failed": "Failed to create account. Please try again.",
+    "create-account": "Create Account",
+    "already-have-account": "Already have an account?",
+    "sign-in": "Sign In",
+    "account-exists": "Account Already Exists",
+    "account-exists-desc": "An account with this email address already exists. Would you like to sign in instead?",
+    "cancel": "Cancel"
+  },
+  "sign-in": {
+    "title": "Sign In",
+    "email": "Email",
+    "password": "Password",
+    "forgot-password": "Forgot Password?",
+    "sign-in": "Sign In"
+  },
+  "reset-password": {
+    "title": "Reset Password",
+    "email": "Email",
+    "send-reset-link": "Send Reset Link",
+    "back-to-sign-in": "Back to Sign In"
+  },
+  "forgot-password": {
+    "title": "Forgot Password?",
+    "email": "Email",
+    "send-reset-link": "Send Reset Link",
+    "back-to-sign-in": "Back to Sign In"
+  },
+  "verify-email": {
+    "title": "Verify Your Email",
+    "description": "We have sent a verification link to your email. Please check your inbox and click the link to confirm your account.",
+    "resend-link": "Resend Link",
+    "back-to-sign-in": "Back to Sign In"
+  },
+  "change-password": {
+    "title": "Change Password",
+    "current-password": "Current Password",
+    "new-password": "New Password",
+    "confirm-password": "Confirm Password",
+    "change-password": "Change Password"
   }
+
 }

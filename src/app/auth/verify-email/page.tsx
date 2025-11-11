@@ -14,6 +14,26 @@ function VerifyEmailContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
 
+  // French translations for auth pages
+  const t = (key: string) => {
+    const translations: Record<string, string> = {
+      "verify-email.verifying": "Vérification de l'email",
+      "verify-email.success": "Email vérifié",
+      "verify-email.failed": "Échec de la vérification",
+      "verify-email.invalid-link": "Lien invalide. Veuillez demander un nouveau lien de vérification.",
+      "verify-email.success-msg": "Votre email a été vérifié avec succès !",
+      "verify-email.failed-msg": "Échec de la vérification de l'email. Veuillez réessayer.",
+      "verify-email.failed-retry": "Échec de la vérification. Veuillez réessayer ou demander un nouveau lien.",
+      "verify-email.wait-verifying": "Veuillez patienter pendant la vérification de votre email...",
+      "verify-email.welcome-redirect": "Bienvenue ! Vous allez être redirigé vers le tableau de bord.",
+      "verify-email.try-new-verification": "Essayez de demander un nouveau lien de vérification.",
+      "verify-email.back-sign-up": "Retour à l'inscription",
+      "verify-email.try-again": "Réessayer",
+      "verify-email.go-dashboard": "Aller au tableau de bord"
+    };
+    return translations[key] || key;
+  };
+
   useEffect(() => {
     const verifyEmail = async () => {
       const token = searchParams.get("token");
@@ -59,11 +79,11 @@ function VerifyEmailContent() {
   const getTitle = () => {
     switch (status) {
       case "verifying":
-        return messages["auth.auth-verifying-email"];
+        return t("verify-email.verifying");
       case "success":
-        return messages["auth.auth-email-verified"];
+        return t("verify-email.success");
       case "error":
-        return messages["auth.auth-verification-failed"];
+        return t("verify-email.failed");
       default:
         return "Email Verification";
     }
@@ -99,7 +119,7 @@ function VerifyEmailContent() {
         <div className="space-y-4">
           {status === "verifying" && (
             <p className="text-gray-600">
-              {messages["auth.auth-wait-verifying"]}
+              {t("verify-email.wait-verifying")}
             </p>
           )}
 
@@ -109,7 +129,7 @@ function VerifyEmailContent() {
                 <p className="text-green-800 font-medium">{message}</p>
               </div>
               <p className="text-gray-600">
-                {messages["auth.auth-welcome-redirect"]}
+                {t("verify-email.welcome-redirect")}
               </p>
             </div>
           )}
@@ -120,7 +140,7 @@ function VerifyEmailContent() {
                 <p className="text-red-800 font-medium">{message}</p>
               </div>
               <p className="text-gray-600 text-sm">
-                {messages["auth.auth-try-new-verification"]}
+                {t("verify-email.try-new-verification")}
               </p>
             </div>
           )}
@@ -133,7 +153,7 @@ function VerifyEmailContent() {
               onClick={() => router.push("/")}
               className="w-full"
             >
-              Go to Dashboard
+              {t("verify-email.go-dashboard")}
             </Button>
           </div>
         )}
@@ -144,14 +164,14 @@ function VerifyEmailContent() {
               onClick={() => router.push(routes.auth.signUp)}
               className="w-full"
             >
-              Back to Sign Up
+              {t("verify-email.back-sign-up")}
             </Button>
             <Button
               variant="outline"
               onClick={() => window.location.reload()}
               className="w-full"
             >
-              Try Again
+              {t("verify-email.try-again")}
             </Button>
           </div>
         )}

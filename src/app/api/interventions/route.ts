@@ -3,7 +3,9 @@ import { auth } from '@/lib/auth';
 import dbConnect from '@/lib/db';
 import { Intervention } from '@/lib/models';
 import { generateInterventionDoc } from '@/lib/docx-generator';
-import { emailService } from '@/lib/email-service';
+import { Resend } from 'resend';
+
+const resend = new Resend(process.env.RESEND_API_KEY || 'dummy-key');
 
 export async function POST(request: NextRequest) {
   try {
@@ -88,7 +90,6 @@ export async function POST(request: NextRequest) {
       description: `Intervention by ${responsable} at ${siteName}. Team: ${teamMembers.join(', ')}. Dates: ${startDate} to ${endDate}. Company: ${entrepriseName}`,
       priority: 'Medium',
       status: 'Pending',
-      photoUrl: photoUrl, // Add this line
       recipientEmails,
       createdAt: savedIntervention.createdAt,
       updatedAt: savedIntervention.updatedAt
@@ -96,21 +97,29 @@ export async function POST(request: NextRequest) {
 
     const docxBuffer = await generateInterventionDoc(docxData);
 
-    // Send email with attachment using the new email service
-    const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
-    const fileName = `Intervention_Report_${timestamp}.docx`;
+    // Send email with attachment (only if API key is available)
+    if (process.env.RESEND_API_KEY && process.env.RESEND_API_KEY !== 'dummy-key') {
+      const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
+      const fileName = `Intervention_Report_${timestamp}.docx`;
 
-    const emailSent = await emailService.sendReportEmail(
-      recipientEmails,
-      `New Intervention Report - ${siteName}`,
-      docxBuffer,
-      fileName,
-      'intervention'
-    );
-
-    if (!emailSent) {
-      console.error('Failed to send intervention report email');
-      // Don't fail the request if email fails, just log it
+      try {
+        await resend.emails.send({
+          from: 'noreply@srm-sm.com',
+          to: recipientEmails,
+          subject: `New Intervention Report - ${siteName}`,
+          text: 'Please find the attached intervention report.',
+          attachments: [
+            {
+              filename: fileName,
+              content: docxBuffer.toString('base64'),
+              contentType: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+            },
+          ],
+        });
+      } catch (emailError) {
+        console.error('Error sending email:', emailError);
+        // Don't fail the request if email fails, just log it
+      }
     }
 
     return NextResponse.json({

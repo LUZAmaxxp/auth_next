@@ -34,8 +34,8 @@ const initialUserSettings = {
     darkMode: false,
     compactView: false,
   },
-  language: 'en-US',
-  timezone: 'UTC-5',
+  language: 'fr',
+  timezone: 'UTC+1',
   isLoading: false,
 };
 

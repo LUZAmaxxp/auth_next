@@ -186,6 +186,33 @@
       "joinDate": "Janvier 2024"
     }
   },
+  "landing": {
+    "hero": {
+      "title": "Société Régionale Multiservices",
+      "subtitle": "SOUSS MASSA",
+      "description": "Votre partenaire de confiance pour les services multisectoriels dans la région Souss-Massa. Nous offrons des solutions complètes en interventions techniques, maintenance industrielle et gestion des réclamations pour assurer l'excellence opérationnelle de vos installations.",
+      "createAccount": "Créer un Compte",
+      "signIn": "Se Connecter",
+      "accessDashboard": "Accéder au Tableau de Bord"
+    },
+    "features": {
+      "interventions": {
+        "title": "Interventions Techniques",
+        "description": "Gestion complète des interventions de maintenance et réparation pour vos équipements industriels."
+      },
+      "reclamations": {
+        "title": "Gestion des Réclamations",
+        "description": "Traitement efficace des réclamations signalées et des problèmes pour une résolution rapide."
+      },
+      "reports": {
+        "title": "Rapports Détaillés",
+        "description": "Génération automatique de rapports DOCX et Excel pour un suivi transparent de toutes les opérations."
+      }
+    },
+    "footer": {
+      "copyright": "© 2024 Société Régionale Multiservices SOUSS MASSA. Tous droits réservés. Réalisé par Ayman ALLOUCH"
+    }
+  },
   "form": {
     "date": "Date",
     "station-name": "Nom de la Station",
@@ -200,5 +227,62 @@
     "recipient-emails": "E-mails des Destinataires",
     "remove": "Supprimer",
     "add-recipient-email": "Ajouter un E-mail de Destinataire"
+  },
+  "sign-up": {
+    "success": "Compte créé avec succès ! Veuillez vérifier votre e-mail pour confirmer votre compte.",
+    "failed": "Échec de la création du compte. Veuillez réessayer.",
+    "create-account": "Créer un Compte",
+    "already-have-account": "Vous avez déjà un compte ?",
+    "sign-in": "Se Connecter",
+    "account-exists": "Le Compte Existe Déjà",
+    "account-exists-desc": "Un compte avec cette adresse e-mail existe déjà. Souhaitez-vous vous connecter à la place ?",
+    "cancel": "Annuler"
+  },
+  "sign-in": {
+    "welcome-back": "Bon Retour",
+    "sign-in-to-your-account": "Connectez-vous à votre compte",
+    "email": "E-mail",
+    "password": "Mot de Passe",
+    "remember-me": "Se souvenir de moi",
+    "forgot-password": "Mot de Passe Oublié ?",
+    "dont-have-account": "Vous n'avez pas de compte ?",
+    "create-account": "Créer un Compte",
+    "sign-in-with-password": "Se Connecter Avec Mot de Passe",
+    "sign-in-with-google": "Se Connecter Avec Google",
+    "sign-in-with-magic-link": "Se Connecter Avec Lien Magique",
+    "invalid-credentials": "Identifiants Invalides. Veuillez essayer de nouveau.",
+    "not-verified": "E-mail Non Verifié",
+    "account-disabled": "Compte Desactivé. Veuillez contacter le Support.",
+    "sign-in": "Se Connecter"
+  },
+  "reset-password": {
+    "title": "Réinitialiser le Mot de Passe",
+    "email": "E-mail",
+    "send-reset-link": "Envoyer le Lien de Réinitialisation",
+    "back-to-sign-in": "Retour à la Connexion"
+  },
+  "forgot-password": {
+    "title": "Mot de Passe Oublié ?",
+    "email": "E-mail",
+    "send-reset-link": "Envoyer le Lien de Réinitialisation",
+    "back-to-sign-in": "Retour à la Connexion"
+  },
+  "verify-email": {
+    "verifying": "Vérification en cours...",
+    "success": "E-mail Vérifié avec Succès !",
+    "failed": "Échec de la Vérification de l'E-mail. Veuillez réessayer."
+  },
+  "change-password": {
+    "title": "Changer le Mot de Passe",
+    "current-password": "Mot de Passe Actuel",
+    "new-password": "Nouveau Mot de Passe",
+    "confirm-password": "Confirmer le Mot de Passe",
+    "change-password": "Changer le Mot de Passe"
+  },  "check-email": {
+    "title": "Vérifiez Votre E-mail",
+    "description": "Nous avons envoyé un lien à votre e-mail. Veuillez vérifier votre boîte de réception et cliquer sur le lien pour continuer.",
+    "resend-link": "Renvoyer le Lien",
+    "resend-success": "E-mail renvoyé avec succès ! Veuillez vérifier votre boîte de réception.",
+    "resend-failed": "Échec de l'envoi de l'e-mail de réinitialisation du mot de passe. Veuillez réessayer."
   }
 }

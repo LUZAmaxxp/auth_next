@@ -186,6 +186,33 @@
       "joinDate": "Enero 2024"
     }
   },
+  "landing": {
+    "hero": {
+      "title": "Sociedad Regional Multiservicios",
+      "subtitle": "SOUSS MASSA",
+      "description": "Su socio de confianza para servicios multisectoriales en la región de Souss-Massa. Ofrecemos soluciones completas en intervenciones técnicas, mantenimiento industrial y gestión de reclamaciones para asegurar la excelencia operativa de sus instalaciones.",
+      "createAccount": "Crear Cuenta",
+      "signIn": "Iniciar Sesión",
+      "accessDashboard": "Acceder al Panel de Control"
+    },
+    "features": {
+      "interventions": {
+        "title": "Intervenciones Técnicas",
+        "description": "Gestión completa de intervenciones de mantenimiento y reparación para sus equipos industriales."
+      },
+      "reclamations": {
+        "title": "Gestión de Reclamaciones",
+        "description": "Procesamiento efectivo de reclamaciones reportadas y problemas para una resolución rápida."
+      },
+      "reports": {
+        "title": "Informes Detallados",
+        "description": "Generación automática de informes DOCX y Excel para un seguimiento transparente de todas las operaciones."
+      }
+    },
+    "footer": {
+      "copyright": "© 2024 Sociedad Regional Multiservicios SOUSS MASSA. Todos los derechos reservados. Hecho por Ayman ALLOUCH"
+    }
+  },
   "form": {
     "date": "Fecha",
     "station-name": "Nombre de la Estación",
@@ -200,5 +227,52 @@
     "recipient-emails": "Correos Electrónicos de Destinatarios",
     "remove": "Eliminar",
     "add-recipient-email": "Agregar Correo Electrónico de Destinatario"
+  },
+  "sign-up": {
+    "success": "¡Cuenta creada exitosamente! Por favor, revise su correo electrónico para verificar su cuenta.",
+    "failed": "Error al crear la cuenta. Por favor, inténtelo de nuevo.",
+    "create-account": "Crear Cuenta",
+    "already-have-account": "¿Ya tienes una cuenta?",
+    "sign-in": "Iniciar Sesión",
+    "account-exists": "La Cuenta Ya Existe",
+    "account-exists-desc": "Ya existe una cuenta con esta dirección de correo electrónico. ¿Desea iniciar sesión en su lugar?",
+    "cancel": "Cancelar"
+  },
+  "sign-in": {
+    "welcome-back": "¡Bienvenido de nuevo!",
+    "sign-in-to-account": "Inicia sesión en tu cuenta",
+    "email": "Correo Electrónico",
+    "password": "Contraseña",
+    "forgot-password": "¿Olvidaste tu contraseña?",
+    "no-account": "¿No tienes una cuenta?",
+    "create-account": "Crear una cuenta",
+    "invalid-credentials": "Credenciales inválidas. Por favor, inténtelo de nuevo.",
+    "account-disabled": "Cuenta deshabilitada. Por favor, contacte al soporte."
+  },
+  "reset-password": {
+    "title": "Restablecer Contraseña",
+    "email": "Correo Electrónico",
+    "send-reset-link": "Enviar Enlace de Restablecimiento",
+    "back-to-sign-in": "Volver a Iniciar Sesión"
+  },
+  "forgot-password": {
+    "title": "¿Olvidaste tu Contraseña?",
+    "email": "Correo Electrónico",
+    "send-reset-link": "Enviar Enlace de Restablecimiento",
+    "back-to-sign-in": "Volver a Iniciar Sesión"
+  },  "verify-email": {
+    "verifying": "Verificando tu correo electrónico...",
+    "success": "¡Correo electrónico verificado con éxito!",
+    "failed": "Error al verificar el correo electrónico. Por favor, inténtelo de nuevo."
+  },
+  "change-password": {
+    "title": "Cambiar Contraseña",
+    "current-password": "Contraseña Actual",
+    "new-password": "Nueva Contraseña",
+    "confirm-new-password": "Confirmar Nueva Contraseña",
+    "change-password": "Cambiar Contraseña",
+    "password-mismatch": "La nueva contraseña y la confirmación no coinciden.",
+    "password-changed": "Contraseña cambiada con éxito.",
+    "change-failed": "Error al cambiar la contraseña. Por favor, inténtelo de nuevo."
   }
 }

@@ -11,6 +11,7 @@ import { signUpSchema, SignUpSchema } from "@/validators/signup.schema";
 import { Modal } from "@core/modal-views/modal";
 import { authClient } from "@/lib/auth-client";
 import toast from "react-hot-toast";
+import { useTranslations } from "@/hooks/use-translations";
 
 const initialValues = {
   firstName: "",
@@ -27,6 +28,7 @@ export default function SignUpForm() {
   const [isLoading, setIsLoading] = useState(false);
   const [showUserExistsDialog, setShowUserExistsDialog] = useState(false);
   const router = useRouter();
+  const { t } = useTranslations();
 
   const onSubmit: SubmitHandler<SignUpSchema> = async (data) => {
     setIsLoading(true);
@@ -48,13 +50,13 @@ export default function SignUpForm() {
           setShowUserExistsDialog(true);
         } else {
           toast.error(
-            error.message || "Failed to create account. Please try again."
+            error.message || t("sign-up.failed")
           );
         }
       } else {
         console.log("Sign-up successful:", result);
         toast.success(
-          "Account created successfully! Please check your email to verify your account."
+          t("sign-up.success")
         );
         // Redirect to check email page after successful registration
         router.push(
@@ -63,7 +65,7 @@ export default function SignUpForm() {
       }
     } catch (error) {
       console.error("Sign-up error:", error);
-      toast.error("Failed to create account. Please try again.");
+      toast.error(t("sign-up.failed"));
     } finally {
       setIsLoading(false);
       setReset({ ...initialValues, isAgreed: false });
@@ -157,18 +159,18 @@ export default function SignUpForm() {
               size={isMedium ? "lg" : "xl"}
               isLoading={isLoading}
             >
-              Create Account
+              {t("sign-up.create-account")}
             </Button>
           </div>
         )}
       </Form>
       <p className="mt-6 text-center text-[15px] leading-loose text-gray-500 md:mt-7 lg:mt-9 lg:text-base">
-        Already have an account?{" "}
+        {t("sign-up.already-have-account")}{" "}
         <Link
           href={routes.auth.signIn}
           className="font-semibold text-gray-700 transition-colors hover:text-primary"
         >
-          Sign In
+          {t("sign-up.sign-in")}
         </Link>
       </p>
 
@@ -195,11 +197,10 @@ export default function SignUpForm() {
             </svg>
           </div>
           <h3 className="text-lg font-semibold text-gray-900 mb-2">
-            Account Already Exists
+            {t("sign-up.account-exists")}
           </h3>
           <p className="text-gray-600 mb-6">
-            An account with this email address already exists. Would you like to
-            sign in instead?
+            {t("sign-up.account-exists-desc")}
           </p>
           <div className="flex gap-3 justify-center">
             <Button
@@ -207,7 +208,7 @@ export default function SignUpForm() {
               onClick={() => setShowUserExistsDialog(false)}
               className="px-4 py-2"
             >
-              Cancel
+              {t("sign-up.cancel")}
             </Button>
             <Button
               onClick={() => {
@@ -216,7 +217,7 @@ export default function SignUpForm() {
               }}
               className="px-4 py-2"
             >
-              Sign In
+              {t("sign-up.sign-in")}
             </Button>
           </div>
         </div>

@@ -67,7 +67,7 @@ export default function SettingsPage() {
 
   const handleLanguageChange = async () => {
     // Cycle through supported locales
-    const locales = ['en', 'fr', 'es', 'ar'] as const;
+    const locales = ['fr', 'en', 'es', 'ar'] as const;
     const currentIndex = locales.indexOf(language as typeof locales[number]);
     const nextIndex = (currentIndex + 1) % locales.length;
     const newLanguage = locales[nextIndex];
