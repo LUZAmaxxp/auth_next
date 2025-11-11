@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-    darkMode: ['class'],
+    darkMode: 'class',
     content: [
     './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
@@ -11,7 +11,7 @@ module.exports = {
   		colors: {
   			primary: {
   				DEFAULT: 'hsl(var(--primary))',
-  				dark: '#c2410c',
+  				dark: '#1e40af',
   				foreground: 'hsl(var(--primary-foreground))'
   			},
   			background: 'hsl(var(--background))',

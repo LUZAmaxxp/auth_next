@@ -1,0 +1,204 @@
+{
+  "common": {
+    "save": "Guardar",
+    "cancel": "Cancelar",
+    "delete": "Eliminar",
+    "edit": "Editar",
+    "add": "Agregar",
+    "loading": "Cargando...",
+    "error": "Error",
+    "success": "Éxito",
+    "confirm": "Confirmar",
+    "yes": "Sí",
+    "no": "No"
+  },
+  "navigation": {
+    "dashboard": "Panel de control",
+    "interventions": "Intervenciones",
+    "reclamations": "Reclamaciones",
+    "settings": "Configuración",
+    "profile": "Perfil",
+    "newIntervention": "Nueva intervención",
+    "newReclamation": "Nueva reclamación",
+    "records": "Registros",
+    "logout": "Cerrar sesión"
+  },
+  "dashboard": {
+    "title": "Panel de control",
+    "subtitle": "Gestione sus intervenciones y reclamaciones",
+    "loading": "Cargando panel de control...",
+    "breadcrumb": {
+      "overview": "Resumen",
+      "interventions": "Intervenciones",
+      "reclamations": "Reclamaciones",
+      "allRecords": "Todos los registros"
+    },
+    "stats": {
+      "totalInterventions": "Total de intervenciones",
+      "totalReclamations": "Total de reclamaciones",
+      "thisMonth": "Este mes"
+    },
+    "actions": {
+      "newIntervention": "Nueva intervención",
+      "newInterventionDesc": "Crear una nueva intervención",
+      "newReclamation": "Nueva reclamación",
+      "newReclamationDesc": "Crear un nuevo registro de reclamación",
+      "createIntervention": "Crear intervención",
+      "createReclamation": "Crear reclamación"
+    },
+    "recentRecords": {
+      "title": "Registros recientes",
+      "noRecords": "No se encontraron registros",
+      "noRecordsDesc": "Cree su primera intervención o reclamación para comenzar.",
+      "teamMembers": "{{count}} miembro del equipo"
+    },
+    "sections": {
+      "allInterventions": "Todas las intervenciones",
+      "noInterventions": "No se encontraron intervenciones",
+      "noInterventionsDesc": "Cree su primera intervención para comenzar.",
+      "allReclamations": "Todas las reclamaciones",
+      "noReclamations": "No se encontraron reclamaciones",
+      "noReclamationsDesc": "Cree su primera reclamación para comenzar."
+    },
+    "errors": {
+      "fetchFailed": "Error al obtener registros",
+      "fetchError": "Ocurrió un error al obtener registros"
+    }
+  },
+  "settings": {
+    "title": "Configuración",
+    "subtitle": "Configure las preferencias de su aplicación",
+    "notifications": {
+      "title": "Notificaciones",
+      "description": "Gestione cómo recibe las notificaciones",
+      "emailNotifications": "Notificaciones por email",
+      "emailNotificationsDesc": "Recibir notificaciones por email",
+      "pushNotifications": "Notificaciones push",
+      "pushNotificationsDesc": "Recibir notificaciones push en el navegador",
+      "weeklyReports": "Informes semanales",
+      "weeklyReportsDesc": "Recibir resúmenes de actividad semanales"
+    },
+    "appearance": {
+      "title": "Apariencia",
+      "description": "Personalice el aspecto de la aplicación",
+      "darkMode": "Modo oscuro",
+      "darkModeDesc": "Cambiar al tema oscuro",
+      "compactView": "Vista compacta",
+      "compactViewDesc": "Usar un diseño más compacto"
+    },
+    "security": {
+      "title": "Seguridad",
+      "description": "Gestione la configuración de seguridad de su cuenta",
+      "changePassword": "Cambiar contraseña",
+      "twoFactorAuth": "Autenticación de dos factores",
+      "loginSessions": "Sesiones de inicio de sesión"
+    },
+    "language": {
+      "title": "Idioma y región",
+      "description": "Establezca sus preferencias de idioma y región",
+      "language": "Idioma",
+      "languageDesc": "Español (ES)",
+      "timezone": "Zona horaria",
+      "timezoneDesc": "UTC+1 (hora de Europa central)",
+      "change": "Cambiar"
+    },
+    "account": {
+      "title": "Acciones de cuenta",
+      "description": "Gestione su cuenta",
+      "exportData": "Exportar datos",
+      "deleteAccount": "Eliminar cuenta",
+      "exporting": "Exportando...",
+      "deleting": "Eliminando..."
+    },
+    "messages": {
+      "settingEnabled": "{{setting}} habilitado",
+      "settingDisabled": "{{setting}} deshabilitado",
+      "languageChanged": "Idioma cambiado a {{language}}",
+      "timezoneChanged": "Zona horaria cambiada a {{timezone}}",
+      "exportSuccess": "Exportación de datos iniciada. La descarga debería comenzar en breve.",
+      "deleteSuccess": "Solicitud de eliminación de cuenta enviada. Será desconectado.",
+      "saveError": "Error al guardar la configuración {{setting}}",
+      "exportError": "Error al exportar datos",
+      "deleteError": "Error al eliminar cuenta"
+    }
+  },
+  "reclamation": {
+    "new-title": "Nueva Reclamación",
+    "new-subtitle": "Crear un nuevo registro de reclamación",
+    "step-basic": "Información Básica",
+    "step-basic-desc": "Ingrese los detalles básicos de la reclamación",
+    "step-desc": "Descripción",
+    "step-desc-desc": "Proporcione descripción detallada y foto opcional",
+    "step-recipients": "Destinatarios",
+    "step-recipients-desc": "Agregar direcciones de correo electrónico de destinatarios"
+  },
+  "intervention": {
+    "new-title": "Nueva Intervención",
+    "new-subtitle": "Crear una nueva intervención",
+    "step-basic": "Información Básica",
+    "step-basic-desc": "Ingrese los detalles básicos de la intervención",
+    "step-team": "Equipo y Sitio",
+    "step-team-desc": "Agregar miembros del equipo e información del sitio",
+    "step-photo": "Foto y Destinatarios",
+    "step-photo-desc": "Subir foto y agregar correos electrónicos de destinatarios",
+    "step-review": "Revisar",
+    "step-review-desc": "Revise su información antes de enviar",
+    "review-title": "Revise su Información",
+    "basic-info": "Información Básica",
+    "team-site": "Equipo y Sitio",
+    "start-date-label": "Fecha de Inicio:",
+    "end-date-label": "Fecha de Fin:",
+    "company-label": "Empresa:",
+    "responsible-label": "Responsable:",
+    "site-label": "Sitio:",
+    "team-members-label": "Miembros del Equipo:",
+    "recipients-label": "Destinatarios:",
+    "photo-label": "Foto:",
+    "uploaded": "Subida",
+    "previous": "Anterior",
+    "next": "Siguiente",
+    "submit-intervention": "Enviar Intervención",
+    "submitting": "Enviando..."
+  },
+  "profile": {
+    "title": "Perfil",
+    "subtitle": "Gestiona la configuración de tu cuenta y preferencias",
+    "sections": {
+      "profileInfo": "Información del Perfil",
+      "profileInfoDesc": "Tu información personal y detalles de la cuenta",
+      "quickActions": "Acciones Rápidas",
+      "quickActionsDesc": "Tareas y configuraciones comunes"
+    },
+    "labels": {
+      "email": "Correo Electrónico",
+      "memberSince": "Miembro desde",
+      "editProfile": "Editar Perfil",
+      "editProfileDesc": "Actualizar tu información personal",
+      "changePassword": "Cambiar Contraseña",
+      "changePasswordDesc": "Actualizar la contraseña de tu cuenta",
+      "notificationSettings": "Configuración de Notificaciones",
+      "notificationSettingsDesc": "Gestionar preferencias de correo electrónico"
+    },
+    "mockData": {
+      "name": "Juan Pérez",
+      "email": "juan.perez@example.com",
+      "role": "Administrador",
+      "joinDate": "Enero 2024"
+    }
+  },
+  "form": {
+    "date": "Fecha",
+    "station-name": "Nombre de la Estación",
+    "station-name-placeholder": "Ingrese el nombre de la estación",
+    "reclamation-type": "Tipo de Reclamación",
+    "reclamation-type-placeholder": "Seleccionar tipo de reclamación",
+    "reclamation-type-hydraulic": "Hidráulico",
+    "reclamation-type-electric": "Eléctrico",
+    "reclamation-type-mechanic": "Mecánico",
+    "description": "Descripción",
+    "description-placeholder": "Describa el problema en detalle",
+    "recipient-emails": "Correos Electrónicos de Destinatarios",
+    "remove": "Eliminar",
+    "add-recipient-email": "Agregar Correo Electrónico de Destinatario"
+  }
+}

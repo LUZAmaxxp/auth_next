@@ -1,0 +1,204 @@
+{
+  "common": {
+    "save": "Enregistrer",
+    "cancel": "Annuler",
+    "delete": "Supprimer",
+    "edit": "Modifier",
+    "add": "Ajouter",
+    "loading": "Chargement...",
+    "error": "Erreur",
+    "success": "Succès",
+    "confirm": "Confirmer",
+    "yes": "Oui",
+    "no": "Non"
+  },
+  "navigation": {
+    "dashboard": "Tableau de bord",
+    "interventions": "Interventions",
+    "reclamations": "Réclamations",
+    "settings": "Paramètres",
+    "profile": "Profil",
+    "newIntervention": "Nouvelle intervention",
+    "newReclamation": "Nouvelle réclamation",
+    "records": "Enregistrements",
+    "logout": "Déconnexion"
+  },
+  "dashboard": {
+    "title": "Tableau de bord",
+    "subtitle": "Gérez vos interventions et réclamations",
+    "loading": "Chargement du tableau de bord...",
+    "breadcrumb": {
+      "overview": "Aperçu",
+      "interventions": "Interventions",
+      "reclamations": "Réclamations",
+      "allRecords": "Tous les enregistrements"
+    },
+    "stats": {
+      "totalInterventions": "Total des interventions",
+      "totalReclamations": "Total des réclamations",
+      "thisMonth": "Ce mois-ci"
+    },
+    "actions": {
+      "newIntervention": "Nouvelle intervention",
+      "newInterventionDesc": "Créer une nouvelle intervention",
+      "newReclamation": "Nouvelle réclamation",
+      "newReclamationDesc": "Créer un nouvel enregistrement de réclamation",
+      "createIntervention": "Créer une intervention",
+      "createReclamation": "Créer une réclamation"
+    },
+    "recentRecords": {
+      "title": "Enregistrements récents",
+      "noRecords": "Aucun enregistrement trouvé",
+      "noRecordsDesc": "Créez votre première intervention ou réclamation pour commencer.",
+      "teamMembers": "{{count}} membre d'équipe"
+    },
+    "sections": {
+      "allInterventions": "Toutes les interventions",
+      "noInterventions": "Aucune intervention trouvée",
+      "noInterventionsDesc": "Créez votre première intervention pour commencer.",
+      "allReclamations": "Toutes les réclamations",
+      "noReclamations": "Aucune réclamation trouvée",
+      "noReclamationsDesc": "Créez votre première réclamation pour commencer."
+    },
+    "errors": {
+      "fetchFailed": "Échec de la récupération des enregistrements",
+      "fetchError": "Une erreur s'est produite lors de la récupération des enregistrements"
+    }
+  },
+  "settings": {
+    "title": "Paramètres",
+    "subtitle": "Configurez vos préférences d'application",
+    "notifications": {
+      "title": "Notifications",
+      "description": "Gérez la façon dont vous recevez les notifications",
+      "emailNotifications": "Notifications par email",
+      "emailNotificationsDesc": "Recevoir les notifications par email",
+      "pushNotifications": "Notifications push",
+      "pushNotificationsDesc": "Recevoir les notifications push dans le navigateur",
+      "weeklyReports": "Rapports hebdomadaires",
+      "weeklyReportsDesc": "Recevoir les résumés d'activité hebdomadaires"
+    },
+    "appearance": {
+      "title": "Apparence",
+      "description": "Personnalisez l'apparence de l'application",
+      "darkMode": "Mode sombre",
+      "darkModeDesc": "Passer au thème sombre",
+      "compactView": "Vue compacte",
+      "compactViewDesc": "Utiliser une mise en page plus compacte"
+    },
+    "security": {
+      "title": "Sécurité",
+      "description": "Gérez les paramètres de sécurité de votre compte",
+      "changePassword": "Changer le mot de passe",
+      "twoFactorAuth": "Authentification à deux facteurs",
+      "loginSessions": "Sessions de connexion"
+    },
+    "language": {
+      "title": "Langue et région",
+      "description": "Définissez vos préférences linguistiques et régionales",
+      "language": "Langue",
+      "languageDesc": "Français (FR)",
+      "timezone": "Fuseau horaire",
+      "timezoneDesc": "UTC+1 (heure d'Europe centrale)",
+      "change": "Changer"
+    },
+    "account": {
+      "title": "Actions du compte",
+      "description": "Gérez votre compte",
+      "exportData": "Exporter les données",
+      "deleteAccount": "Supprimer le compte",
+      "exporting": "Exportation...",
+      "deleting": "Suppression..."
+    },
+    "messages": {
+      "settingEnabled": "{{setting}} activé",
+      "settingDisabled": "{{setting}} désactivé",
+      "languageChanged": "Langue changée en {{language}}",
+      "timezoneChanged": "Fuseau horaire changé en {{timezone}}",
+      "exportSuccess": "Exportation des données initiée. Le téléchargement devrait commencer sous peu.",
+      "deleteSuccess": "Demande de suppression du compte soumise. Vous serez déconnecté.",
+      "saveError": "Échec de la sauvegarde du paramètre {{setting}}",
+      "exportError": "Échec de l'exportation des données",
+      "deleteError": "Échec de la suppression du compte"
+    }
+  },
+  "reclamation": {
+    "new-title": "Nouvelle Réclamation",
+    "new-subtitle": "Créer un nouvel enregistrement de réclamation",
+    "step-basic": "Informations de Base",
+    "step-basic-desc": "Saisir les détails de base de la réclamation",
+    "step-desc": "Description",
+    "step-desc-desc": "Fournir une description détaillée et une photo optionnelle",
+    "step-recipients": "Destinataires",
+    "step-recipients-desc": "Ajouter les adresses e-mail des destinataires"
+  },
+  "intervention": {
+    "new-title": "Nouvelle Intervention",
+    "new-subtitle": "Créer une nouvelle intervention",
+    "step-basic": "Informations de Base",
+    "step-basic-desc": "Saisir les détails de base de l'intervention",
+    "step-team": "Équipe & Site",
+    "step-team-desc": "Ajouter les membres d'équipe et les informations du site",
+    "step-photo": "Photo & Destinataires",
+    "step-photo-desc": "Télécharger une photo et ajouter les adresses e-mail des destinataires",
+    "step-review": "Réviser",
+    "step-review-desc": "Réviser vos informations avant de soumettre",
+    "review-title": "Réviser vos Informations",
+    "basic-info": "Informations de Base",
+    "team-site": "Équipe & Site",
+    "start-date-label": "Date de Début :",
+    "end-date-label": "Date de Fin :",
+    "company-label": "Entreprise :",
+    "responsible-label": "Responsable :",
+    "site-label": "Site :",
+    "team-members-label": "Membres d'Équipe :",
+    "recipients-label": "Destinataires :",
+    "photo-label": "Photo :",
+    "uploaded": "Téléchargée",
+    "previous": "Précédent",
+    "next": "Suivant",
+    "submit-intervention": "Soumettre l'Intervention",
+    "submitting": "Soumission en cours..."
+  },
+  "profile": {
+    "title": "Profil",
+    "subtitle": "Gérez les paramètres de votre compte et vos préférences",
+    "sections": {
+      "profileInfo": "Informations du Profil",
+      "profileInfoDesc": "Vos informations personnelles et détails du compte",
+      "quickActions": "Actions Rapides",
+      "quickActionsDesc": "Tâches et paramètres courants"
+    },
+    "labels": {
+      "email": "E-mail",
+      "memberSince": "Membre depuis",
+      "editProfile": "Modifier le Profil",
+      "editProfileDesc": "Mettre à jour vos informations personnelles",
+      "changePassword": "Changer le Mot de Passe",
+      "changePasswordDesc": "Mettre à jour le mot de passe de votre compte",
+      "notificationSettings": "Paramètres de Notification",
+      "notificationSettingsDesc": "Gérer les préférences d'e-mail"
+    },
+    "mockData": {
+      "name": "Jean Dupont",
+      "email": "jean.dupont@example.com",
+      "role": "Administrateur",
+      "joinDate": "Janvier 2024"
+    }
+  },
+  "form": {
+    "date": "Date",
+    "station-name": "Nom de la Station",
+    "station-name-placeholder": "Saisir le nom de la station",
+    "reclamation-type": "Type de Réclamation",
+    "reclamation-type-placeholder": "Sélectionner le type de réclamation",
+    "reclamation-type-hydraulic": "Hydraulique",
+    "reclamation-type-electric": "Électrique",
+    "reclamation-type-mechanic": "Mécanique",
+    "description": "Description",
+    "description-placeholder": "Décrire le problème en détail",
+    "recipient-emails": "E-mails des Destinataires",
+    "remove": "Supprimer",
+    "add-recipient-email": "Ajouter un E-mail de Destinataire"
+  }
+}

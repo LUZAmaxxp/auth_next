@@ -1,0 +1,204 @@
+{
+  "common": {
+    "save": "حفظ",
+    "cancel": "إلغاء",
+    "delete": "حذف",
+    "edit": "تعديل",
+    "add": "إضافة",
+    "loading": "جارٍ التحميل...",
+    "error": "خطأ",
+    "success": "نجح",
+    "confirm": "تأكيد",
+    "yes": "نعم",
+    "no": "لا"
+  },
+  "navigation": {
+    "dashboard": "لوحة التحكم",
+    "interventions": "التدخلات",
+    "reclamations": "الشكاوى",
+    "settings": "الإعدادات",
+    "profile": "الملف الشخصي",
+    "newIntervention": "تدخل جديد",
+    "newReclamation": "شكوى جديدة",
+    "records": "السجلات",
+    "logout": "تسجيل الخروج"
+  },
+  "dashboard": {
+    "title": "لوحة التحكم",
+    "subtitle": "إدارة تدخلاتك وشكاويك",
+    "loading": "جارٍ تحميل لوحة التحكم...",
+    "breadcrumb": {
+      "overview": "نظرة عامة",
+      "interventions": "التدخلات",
+      "reclamations": "الشكاوى",
+      "allRecords": "جميع السجلات"
+    },
+    "stats": {
+      "totalInterventions": "إجمالي التدخلات",
+      "totalReclamations": "إجمالي الشكاوى",
+      "thisMonth": "هذا الشهر"
+    },
+    "actions": {
+      "newIntervention": "تدخل جديد",
+      "newInterventionDesc": "إنشاء تدخل جديد",
+      "newReclamation": "شكوى جديدة",
+      "newReclamationDesc": "إنشاء سجل شكوى جديد",
+      "createIntervention": "إنشاء تدخل",
+      "createReclamation": "إنشاء شكوى"
+    },
+    "recentRecords": {
+      "title": "السجلات الأخيرة",
+      "noRecords": "لم يتم العثور على سجلات",
+      "noRecordsDesc": "أنشئ تدخلك أو شكواك الأولى للبدء.",
+      "teamMembers": "{{count}} عضو فريق"
+    },
+    "sections": {
+      "allInterventions": "جميع التدخلات",
+      "noInterventions": "لم يتم العثور على تدخلات",
+      "noInterventionsDesc": "أنشئ تدخلك الأول للبدء.",
+      "allReclamations": "جميع الشكاوى",
+      "noReclamations": "لم يتم العثور على شكاوى",
+      "noReclamationsDesc": "أنشئ شكواك الأولى للبدء."
+    },
+    "errors": {
+      "fetchFailed": "فشل في جلب السجلات",
+      "fetchError": "حدث خطأ أثناء جلب السجلات"
+    }
+  },
+  "settings": {
+    "title": "الإعدادات",
+    "subtitle": "قم بتكوين تفضيلات التطبيق الخاص بك",
+    "notifications": {
+      "title": "الإشعارات",
+      "description": "إدارة كيفية تلقي الإشعارات",
+      "emailNotifications": "إشعارات البريد الإلكتروني",
+      "emailNotificationsDesc": "تلقي الإشعارات عبر البريد الإلكتروني",
+      "pushNotifications": "إشعارات الدفع",
+      "pushNotificationsDesc": "تلقي إشعارات الدفع في المتصفح",
+      "weeklyReports": "التقارير الأسبوعية",
+      "weeklyReportsDesc": "تلقي ملخصات النشاط الأسبوعية"
+    },
+    "appearance": {
+      "title": "المظهر",
+      "description": "تخصيص مظهر التطبيق",
+      "darkMode": "الوضع المظلم",
+      "darkModeDesc": "التبديل إلى السمة المظلمة",
+      "compactView": "العرض المضغوط",
+      "compactViewDesc": "استخدام تخطيط أكثر إحكاماً"
+    },
+    "security": {
+      "title": "الأمان",
+      "description": "إدارة إعدادات أمان حسابك",
+      "changePassword": "تغيير كلمة المرور",
+      "twoFactorAuth": "المصادقة الثنائية",
+      "loginSessions": "جلسات تسجيل الدخول"
+    },
+    "language": {
+      "title": "اللغة والمنطقة",
+      "description": "تعيين تفضيلات اللغة والمنطقة الخاصة بك",
+      "language": "اللغة",
+      "languageDesc": "العربية (MA)",
+      "timezone": "المنطقة الزمنية",
+      "timezoneDesc": "UTC+1 (توقيت وسط أوروبا)",
+      "change": "تغيير"
+    },
+    "account": {
+      "title": "إجراءات الحساب",
+      "description": "إدارة حسابك",
+      "exportData": "تصدير البيانات",
+      "deleteAccount": "حذف الحساب",
+      "exporting": "جارٍ التصدير...",
+      "deleting": "جارٍ الحذف..."
+    },
+    "messages": {
+      "settingEnabled": "{{setting}} مفعل",
+      "settingDisabled": "{{setting}} معطل",
+      "languageChanged": "تم تغيير اللغة إلى {{language}}",
+      "timezoneChanged": "تم تغيير المنطقة الزمنية إلى {{timezone}}",
+      "exportSuccess": "تم بدء تصدير البيانات. يجب أن يبدأ التحميل قريباً.",
+      "deleteSuccess": "تم إرسال طلب حذف الحساب. سيتم تسجيل خروجك.",
+      "saveError": "فشل في حفظ إعداد {{setting}}",
+      "exportError": "فشل في تصدير البيانات",
+      "deleteError": "فشل في حذف الحساب"
+    }
+  },
+  "reclamation": {
+    "new-title": "شكوى جديدة",
+    "new-subtitle": "إنشاء سجل شكوى جديد",
+    "step-basic": "المعلومات الأساسية",
+    "step-basic-desc": "أدخل التفاصيل الأساسية للشكوى",
+    "step-desc": "الوصف",
+    "step-desc-desc": "قدم وصفاً مفصلاً وصورة اختيارية",
+    "step-recipients": "المستلمون",
+    "step-recipients-desc": "إضافة عناوين البريد الإلكتروني للمستلمين"
+  },
+  "intervention": {
+    "new-title": "تدخل جديد",
+    "new-subtitle": "إنشاء تدخل جديد",
+    "step-basic": "المعلومات الأساسية",
+    "step-basic-desc": "أدخل التفاصيل الأساسية للتدخل",
+    "step-team": "الفريق والموقع",
+    "step-team-desc": "إضافة أعضاء الفريق ومعلومات الموقع",
+    "step-photo": "الصورة والمستلمون",
+    "step-photo-desc": "رفع الصورة وإضافة عناوين البريد الإلكتروني للمستلمين",
+    "step-review": "مراجعة",
+    "step-review-desc": "راجع معلوماتك قبل الإرسال",
+    "review-title": "راجع معلوماتك",
+    "basic-info": "المعلومات الأساسية",
+    "team-site": "الفريق والموقع",
+    "start-date-label": "تاريخ البدء:",
+    "end-date-label": "تاريخ الانتهاء:",
+    "company-label": "الشركة:",
+    "responsible-label": "المسؤول:",
+    "site-label": "الموقع:",
+    "team-members-label": "أعضاء الفريق:",
+    "recipients-label": "المستلمون:",
+    "photo-label": "الصورة:",
+    "uploaded": "تم الرفع",
+    "previous": "السابق",
+    "next": "التالي",
+    "submit-intervention": "إرسال التدخل",
+    "submitting": "جارٍ الإرسال..."
+  },
+  "profile": {
+    "title": "الملف الشخصي",
+    "subtitle": "إدارة إعدادات حسابك وتفضيلاتك",
+    "sections": {
+      "profileInfo": "معلومات الملف الشخصي",
+      "profileInfoDesc": "معلوماتك الشخصية وتفاصيل حسابك",
+      "quickActions": "الإجراءات السريعة",
+      "quickActionsDesc": "المهام والإعدادات الشائعة"
+    },
+    "labels": {
+      "email": "البريد الإلكتروني",
+      "memberSince": "عضو منذ",
+      "editProfile": "تعديل الملف الشخصي",
+      "editProfileDesc": "تحديث معلوماتك الشخصية",
+      "changePassword": "تغيير كلمة المرور",
+      "changePasswordDesc": "تحديث كلمة مرور حسابك",
+      "notificationSettings": "إعدادات الإشعارات",
+      "notificationSettingsDesc": "إدارة تفضيلات البريد الإلكتروني"
+    },
+    "mockData": {
+      "name": "جون دو",
+      "email": "john.doe@example.com",
+      "role": "مدير",
+      "joinDate": "يناير 2024"
+    }
+  },
+  "form": {
+    "date": "التاريخ",
+    "station-name": "اسم المحطة",
+    "station-name-placeholder": "أدخل اسم المحطة",
+    "reclamation-type": "نوع الشكوى",
+    "reclamation-type-placeholder": "اختر نوع الشكوى",
+    "reclamation-type-hydraulic": "هيدروليكي",
+    "reclamation-type-electric": "كهربائي",
+    "reclamation-type-mechanic": "ميكانيكي",
+    "description": "الوصف",
+    "description-placeholder": "وصف المشكلة بالتفصيل",
+    "recipient-emails": "رسائل البريد الإلكتروني للمستلمين",
+    "remove": "إزالة",
+    "add-recipient-email": "إضافة بريد إلكتروني للمستلم"
+  }
+}

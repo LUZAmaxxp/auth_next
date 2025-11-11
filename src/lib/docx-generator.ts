@@ -1,5 +1,7 @@
 import { Document, Packer, Paragraph, TextRun, Table, TableCell, TableRow, WidthType, AlignmentType, ImageRun } from 'docx';
 import fetch from 'node-fetch';
+import fs from 'fs';
+import path from 'path';
 
 export interface BaseReportData {
   _id?: string;
@@ -22,6 +24,7 @@ export interface InterventionData extends BaseReportData {
 
 export interface ReclamationData extends BaseReportData {
   reclamationType: string;
+  date?: Date;
 }
 
 // Common function to create report details table
@@ -32,6 +35,7 @@ function createDetailsTable(data: BaseReportData & { type: string; typeValue: st
       type: WidthType.PERCENTAGE,
     },
     rows: [
+      createTableRow("ID:", data._id || ""),
       createTableRow("Employee Name:", data.employeeName),
       createTableRow("Employee ID:", data.employeeId),
       createTableRow("Site Name:", data.siteName),
@@ -75,48 +79,75 @@ function createSectionHeader(text: string, spacingBefore = 400, spacingAfter = 2
 }
 
 // Helper function to create content paragraphs
-function createContentParagraph(text: string, spacingAfter = 400): Paragraph {
-  return new Paragraph({
-    children: [
-      new TextRun({
-        text,
-        size: 22,
-      }),
-    ],
-    spacing: { after: spacingAfter },
-  });
+function createContentParagraph(text: string, spacingAfter = 400): Paragraph[] {
+  const lines = text.split('\n');
+  const paragraphs: Paragraph[] = [];
+
+  for (let i = 0; i < lines.length; i++) {
+    const line = lines[i];
+    const textRuns: TextRun[] = [];
+    const parts = line.split(/(\*\*.*?\*\*)/g);
+
+    for (const part of parts) {
+      if (part.startsWith('**') && part.endsWith('**')) {
+        // Bold text
+        const boldText = part.slice(2, -2);
+        textRuns.push(new TextRun({
+          text: boldText,
+          bold: true,
+          size: 22,
+        }));
+      } else {
+        // Regular text
+        textRuns.push(new TextRun({
+          text: part,
+          size: 22,
+        }));
+      }
+    }
+
+    paragraphs.push(new Paragraph({
+      children: textRuns,
+      spacing: { after: i === lines.length - 1 ? spacingAfter : 200 },
+    }));
+  }
+
+  return paragraphs;
 }
 
-// Helper function to create main header
-function createMainHeader(): Paragraph {
-  return new Paragraph({
-    children: [
-      new TextRun({
-        text: "UTILITY FIRM",
-        bold: true,
-        size: 32,
-        color: "1F2937",
-      }),
-    ],
-    alignment: AlignmentType.CENTER,
-    spacing: { after: 200 },
-  });
-}
+
 
 // Helper function to create report title
-function createReportTitle(title: string): Paragraph {
-  return new Paragraph({
-    children: [
-      new TextRun({
-        text: title,
-        bold: true,
-        size: 28,
-        color: "374151",
+function createReportTitle(title: string | string[]): Paragraph[] {
+  if (typeof title === 'string') {
+    return [
+      new Paragraph({
+        children: [
+          new TextRun({
+            text: title,
+            bold: true,
+            size: 28,
+            color: "374151",
+          }),
+        ],
+        alignment: AlignmentType.CENTER,
+        spacing: { after: 600 },
       }),
-    ],
-    alignment: AlignmentType.CENTER,
-    spacing: { after: 600 },
-  });
+    ];
+  } else {
+    return title.map((line, index) => new Paragraph({
+      children: [
+        new TextRun({
+          text: line,
+          bold: true,
+          size: 28,
+          color: "374151",
+        }),
+      ],
+      alignment: AlignmentType.CENTER,
+      spacing: { after: index === title.length - 1 ? 600 : 200 },
+    }));
+  }
 }
 
 // Helper function to create photo section
@@ -141,13 +172,35 @@ function createPhotoSection(photoBuffer: Buffer | null): Paragraph[] {
   ];
 }
 
+// Helper function to create logo paragraph
+function createLogoParagraph(): Paragraph {
+  const logoPath = path.join(process.cwd(), 'public', 'LOGO-SOUSS-MASSA-1033x308px-removebg-preview.png');
+  const logoBuffer = fs.readFileSync(logoPath);
+
+  return new Paragraph({
+    children: [
+      new ImageRun({
+        data: logoBuffer,
+        transformation: {
+          width: 200,
+          height: 60,
+        },
+        type: "png",
+      }),
+    ],
+    alignment: AlignmentType.LEFT,
+    spacing: { after: 200 },
+  });
+}
+
 // Common function to generate report document
 async function generateReportDoc(
   data: BaseReportData & { type: string; typeValue: string },
-  reportTitle: string
+  reportTitle: string | string[],
+  includeDescriptionHeader: boolean = true
 ): Promise<Buffer> {
   let photoBuffer: Buffer | null = null;
-  
+
   try {
     if (data.photoUrl) {
       photoBuffer = await fetch(data.photoUrl).then(res => res.buffer());
@@ -162,23 +215,24 @@ async function generateReportDoc(
       {
         properties: {},
         children: [
-          // Header
-          createMainHeader(),
-          createReportTitle(reportTitle),
+          // Logo
+          createLogoParagraph(),
+          // Title
+          ...createReportTitle(reportTitle),
 
           // Report Details Table
           createDetailsTable(data),
 
-          // Description Section
-          createSectionHeader("Description:"),
-          createContentParagraph(data.description),
+          
+          ...createContentParagraph(data.description),
 
-          // Photo Section
+          // Photo Section  
+          createSectionHeader("Photo:"),
           ...createPhotoSection(photoBuffer),
 
           // Recipients Section
           createSectionHeader("Report Recipients:"),
-          createContentParagraph(data.recipientEmails.join(", ")),
+          ...createContentParagraph(data.recipientEmails.join(", ")),
         ],
       },
     ],
@@ -188,23 +242,46 @@ async function generateReportDoc(
 }
 
 export async function generateInterventionDoc(data: InterventionData): Promise<Buffer> {
+  // Parse the description to extract team, dates, and company
+  const description = data.description || '';
+
+  // Extract team (look for "Team:" pattern)
+  const teamMatch = description.match(/Team:\s*([^.]+)/i);
+  const team = teamMatch ? teamMatch[1].trim() : '';
+
+  // Extract dates (look for "Dates:" pattern)
+  const datesMatch = description.match(/Dates:\s*([^.]+)/i);
+  const dates = datesMatch ? datesMatch[1].trim() : '';
+
+  // Extract company (look for "Company:" pattern)
+  const companyMatch = description.match(/Company:\s*([^.]+)/i);
+  const company = companyMatch ? companyMatch[1].trim() : '';
+
+  // Create formatted description with bold labels
+  const descriptionWithLabels = `**Intervention by Team:** ${team}\n**Dates:** ${dates}\n**Company:** ${company}`;
+
   return generateReportDoc(
     {
       ...data,
       type: "Intervention Type",
-      typeValue: data.interventionType
+      typeValue: data.interventionType,
+      description: descriptionWithLabels
     },
-    "Intervention Report"
+    "Intervention"
   );
 }
 
 export async function generateReclamationDoc(data: ReclamationData): Promise<Buffer> {
+  // Create formatted description with form data and description label near the content
+  const descriptionWithLabels = `**Reclamation Type:** ${data.reclamationType}\n**Date:** ${data.date ? new Date(data.date).toLocaleDateString() : ''}\n**Station Name:** ${data.stationName}\n\n**Description:** ${data.description}`;
+
   return generateReportDoc(
     {
       ...data,
-      type: "Reclamation Type", 
-      typeValue: data.reclamationType
+      type: "Reclamation Type",
+      typeValue: data.reclamationType,
+      description: descriptionWithLabels
     },
-    "Reclamation Report"
+    "Reclamation"
   );
 }

@@ -1,0 +1,245 @@
+{
+  "common": {
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "add": "Add",
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success",
+    "confirm": "Confirm",
+    "yes": "Yes",
+    "no": "No"
+  },
+  "navigation": {
+    "dashboard": "Dashboard",
+    "interventions": "Interventions",
+    "reclamations": "Reclamations",
+    "settings": "Settings",
+    "profile": "Profile",
+    "newIntervention": "New Intervention",
+    "newReclamation": "New Reclamation",
+    "records": "Records",
+    "logout": "Logout"
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "subtitle": "Manage your interventions and reclamations",
+    "loading": "Loading dashboard...",
+    "breadcrumb": {
+      "overview": "Overview",
+      "interventions": "Interventions",
+      "reclamations": "Reclamations",
+      "allRecords": "All Records"
+    },
+    "stats": {
+      "totalInterventions": "Total Interventions",
+      "totalReclamations": "Total Reclamations",
+      "thisMonth": "This Month"
+    },
+    "actions": {
+      "newIntervention": "New Intervention",
+      "newInterventionDesc": "Create a new intervention",
+      "newReclamation": "New Reclamation",
+      "newReclamationDesc": "Create a new reclamation record",
+      "createIntervention": "Create Intervention",
+      "createReclamation": "Create Reclamation"
+    },
+    "recentRecords": {
+      "title": "Recent Records",
+      "noRecords": "No records found",
+      "noRecordsDesc": "Create your first intervention or reclamation to get started.",
+      "teamMembers": "{{count}} team member"
+    },
+    "sections": {
+      "allInterventions": "All Interventions",
+      "noInterventions": "No interventions found",
+      "noInterventionsDesc": "Create your first intervention to get started.",
+      "allReclamations": "All Reclamations",
+      "noReclamations": "No reclamations found",
+      "noReclamationsDesc": "Create your first reclamation to get started."
+    },
+    "errors": {
+      "fetchFailed": "Failed to fetch records",
+      "fetchError": "An error occurred while fetching records"
+    }
+  },
+  "settings": {
+    "title": "Settings",
+    "subtitle": "Configure your application preferences",
+    "notifications": {
+      "title": "Notifications",
+      "description": "Manage how you receive notifications",
+      "emailNotifications": "Email Notifications",
+      "emailNotificationsDesc": "Receive notifications via email",
+      "pushNotifications": "Push Notifications",
+      "pushNotificationsDesc": "Receive push notifications in browser",
+      "weeklyReports": "Weekly Reports",
+      "weeklyReportsDesc": "Receive weekly activity summaries"
+    },
+    "appearance": {
+      "title": "Appearance",
+      "description": "Customize the look and feel of the application",
+      "darkMode": "Dark Mode",
+      "darkModeDesc": "Switch to dark theme",
+      "compactView": "Compact View",
+      "compactViewDesc": "Use a more compact layout"
+    },
+    "security": {
+      "title": "Security",
+      "description": "Manage your account security settings",
+      "changePassword": "Change Password",
+      "twoFactorAuth": "Two-Factor Authentication",
+      "loginSessions": "Login Sessions"
+    },
+    "language": {
+      "title": "Language & Region",
+      "description": "Set your language and regional preferences",
+      "language": "Language",
+      "languageDesc": "English (US)",
+      "timezone": "Timezone",
+      "timezoneDesc": "UTC-5 (Eastern Time)",
+      "change": "Change"
+    },
+    "account": {
+      "title": "Account Actions",
+      "description": "Manage your account",
+      "exportData": "Export Data",
+      "deleteAccount": "Delete Account",
+      "exporting": "Exporting...",
+      "deleting": "Deleting..."
+    },
+    "messages": {
+      "settingEnabled": "{{setting}} enabled",
+      "settingDisabled": "{{setting}} disabled",
+      "languageChanged": "Language changed to {{language}}",
+      "timezoneChanged": "Timezone changed to {{timezone}}",
+      "exportSuccess": "Data export initiated. Download should start shortly.",
+      "deleteSuccess": "Account deletion request submitted. You will be logged out.",
+      "saveError": "Failed to save {{setting}} setting",
+      "exportError": "Failed to export data",
+      "deleteError": "Failed to delete account"
+    }
+  },
+  "landing": {
+    "hero": {
+      "title": "Société Régionale Multiservices",
+      "subtitle": "SOUSS MASSA",
+      "description": "Your trusted partner for multisectoral services in the Souss-Massa region. We offer complete solutions in technical interventions, industrial maintenance, and complaint management to ensure the operational excellence of your facilities.",
+      "createAccount": "Create Account",
+      "signIn": "Sign In",
+      "accessDashboard": "Access Dashboard"
+    },
+    "features": {
+      "interventions": {
+        "title": "Technical Interventions",
+        "description": "Complete management of maintenance and repair interventions for your industrial equipment."
+      },
+      "reclamations": {
+        "title": "Complaint Management",
+        "description": "Effective processing of reported complaints and issues for rapid resolution."
+      },
+      "reports": {
+        "title": "Detailed Reports",
+        "description": "Automatic generation of DOCX and Excel reports for transparent tracking of all operations."
+      }
+    },
+    "footer": {
+      "copyright": "© 2024 Société Régionale Multiservices SOUSS MASSA. All rights reserved. Made By Ayman ALLOUCH"
+    }
+  },
+  "profile": {
+    "title": "Profile",
+    "subtitle": "Manage your account settings and preferences",
+    "sections": {
+      "profileInfo": "Profile Information",
+      "profileInfoDesc": "Your personal information and account details",
+      "quickActions": "Quick Actions",
+      "quickActionsDesc": "Common tasks and settings"
+    },
+    "labels": {
+      "email": "Email",
+      "memberSince": "Member since",
+      "editProfile": "Edit Profile",
+      "editProfileDesc": "Update your personal information",
+      "changePassword": "Change Password",
+      "changePasswordDesc": "Update your account password",
+      "notificationSettings": "Notification Settings",
+      "notificationSettingsDesc": "Manage email preferences"
+    },
+    "mockData": {
+      "name": "John Doe",
+      "email": "john.doe@example.com",
+      "role": "Administrator",
+      "joinDate": "January 2024"
+    }
+  },
+  "reclamation": {
+    "new-title": "New Reclamation",
+    "new-subtitle": "Create a new reclamation record",
+    "step-basic": "Basic Information",
+    "step-basic-desc": "Enter the basic details of the reclamation",
+    "step-desc": "Description",
+    "step-desc-desc": "Provide detailed description and optional photo",
+    "step-recipients": "Recipients",
+    "step-recipients-desc": "Add email addresses of recipients"
+  },
+  "intervention": {
+    "new-title": "New Intervention",
+    "new-subtitle": "Create a new intervention",
+    "step-basic": "Basic Information",
+    "step-basic-desc": "Enter the basic details of the intervention",
+    "step-team": "Team & Site",
+    "step-team-desc": "Add team members and site information",
+    "step-photo": "Photo & Recipients",
+    "step-photo-desc": "Upload photo and add recipient emails",
+    "step-review": "Review",
+    "step-review-desc": "Review your information before submitting",
+    "review-title": "Review Your Information",
+    "basic-info": "Basic Information",
+    "team-site": "Team & Site",
+    "start-date-label": "Start Date:",
+    "end-date-label": "End Date:",
+    "company-label": "Company:",
+    "responsible-label": "Responsible:",
+    "site-label": "Site:",
+    "team-members-label": "Team Members:",
+    "recipients-label": "Recipients:",
+    "photo-label": "Photo:",
+    "uploaded": "Uploaded",
+    "previous": "Previous",
+    "next": "Next",
+    "submit-intervention": "Submit Intervention",
+    "submitting": "Submitting..."
+  },
+  "form": {
+    "start-date": "Start Date",
+    "end-date": "End Date",
+    "company-name": "Company Name",
+    "company-name-placeholder": "Enter company name",
+    "responsible-person": "Responsible Person",
+    "responsible-person-placeholder": "Enter responsible person",
+    "team-members": "Team Members",
+    "team-member": "Team Member",
+    "add-team-member": "Add Team Member",
+    "site-name": "Site Name",
+    "site-name-placeholder": "Enter site name",
+    "photo-optional": "Photo (Optional)",
+    "recipient-emails": "Recipient Emails",
+    "recipient": "Recipient",
+    "add-recipient": "Add Recipient",
+    "remove": "Remove",
+    "date": "Date",
+    "station-name": "Station Name",
+    "station-name-placeholder": "Enter station name",
+    "reclamation-type": "Reclamation Type",
+    "reclamation-type-placeholder": "Select reclamation type",
+    "reclamation-type-hydraulic": "Hydraulic",
+    "reclamation-type-electric": "Electric",
+    "reclamation-type-mechanic": "Mechanic",
+    "description": "Description",
+    "description-placeholder": "Describe the issue in detail",
+    "add-recipient-email": "Add Recipient Email"
+  }
+}

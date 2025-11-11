@@ -87,7 +87,8 @@ export async function POST(request: NextRequest) {
       photoUrl: photoUrl,
       recipientEmails: recipientEmails,
       createdAt: savedReclamation.createdAt,
-      updatedAt: savedReclamation.updatedAt
+      updatedAt: savedReclamation.updatedAt,
+      date: new Date(date) // Add the form date
     };
 
     const docxBuffer = await generateReclamationDoc(docxData);
