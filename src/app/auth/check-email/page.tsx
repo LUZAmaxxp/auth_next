@@ -23,6 +23,35 @@ function CheckEmailContent() {
     }
   }, [searchParams]);
 
+  // French translations for auth pages
+  const t = (key: string) => {
+    const translations: Record<string, string> = {
+      "check-email.title": "Vérifiez votre email",
+      "check-email.reset-title": "Email de réinitialisation envoyé !",
+      "check-email.verify-title": "Email de vérification envoyé !",
+      "check-email.reset-message": "Nous vous avons envoyé un lien de réinitialisation de mot de passe à :",
+      "check-email.verify-message": "Nous vous avons envoyé un lien de vérification à :",
+      "check-email.reset-instruction": "Veuillez vérifier votre email et cliquer sur le lien de réinitialisation pour créer un nouveau mot de passe.",
+      "check-email.verify-instruction": "Veuillez vérifier votre email et cliquer sur le lien de vérification pour activer votre compte.",
+      "check-email.cant-find": "Vous ne trouvez pas l'email ?",
+      "check-email.spam-tip": "Vérifiez votre dossier spam ou courrier indésirable",
+      "check-email.correct-email": "Assurez-vous que votre adresse email est correcte",
+      "check-email.delivery-time": "L'email peut prendre quelques minutes pour arriver",
+      "check-email.resend-reset": "Renvoyer l'email de réinitialisation",
+      "check-email.resend-verify": "Renvoyer l'email de vérification",
+      "check-email.sign-in-instead": "Se connecter à la place",
+      "check-email.back-sign-up": "Retour à l'inscription",
+      "check-email.support": "Vous avez encore des problèmes ?",
+      "check-email.contact-support": "Contacter le support",
+      "check-email.reset-success": "Email de réinitialisation envoyé avec succès !",
+      "check-email.verify-success": "Email de vérification envoyé avec succès !",
+      "check-email.reset-failed": "Échec de l'envoi de l'email de réinitialisation. Veuillez réessayer.",
+      "check-email.verify-failed": "Échec de l'envoi de l'email de vérification. Veuillez réessayer.",
+      "check-email.resend-failed": "Échec de l'envoi de l'email. Veuillez réessayer."
+    };
+    return translations[key] || key;
+  };
+
   const handleResendEmail = async () => {
     if (!email) return;
 
@@ -38,9 +67,9 @@ function CheckEmailContent() {
         });
 
         if (response.ok) {
-          alert("Password reset email sent successfully!");
+          alert(t("check-email.reset-success"));
         } else {
-          alert("Failed to send password reset email. Please try again.");
+          alert(t("check-email.reset-failed"));
         }
       } else {
         // Resend verification email
@@ -53,19 +82,19 @@ function CheckEmailContent() {
         });
 
         if (response.ok) {
-          alert("Verification email sent successfully!");
+          alert(t("check-email.verify-success"));
         } else {
-          alert("Failed to send verification email. Please try again.");
+          alert(t("check-email.verify-failed"));
         }
       }
     } catch (error) {
       console.error("Error resending email:", error);
-      alert(`Failed to send ${isResetPassword ? "password reset" : "verification"} email. Please try again.`);
+      alert(t("check-email.resend-failed"));
     }
   };
 
   return (
-    <AuthWrapperFour title="Check Your Email" className="max-w-lg">
+    <AuthWrapperFour title={t("check-email.title")} className="max-w-lg">
       <div className="text-center space-y-6">
         {/* Email Icon */}
         <div className="mx-auto w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-6">
@@ -87,11 +116,11 @@ function CheckEmailContent() {
         {/* Main Message */}
         <div className="space-y-4">
           <h3 className="text-xl font-semibold text-gray-900">
-            {isResetPassword ? "Password Reset Email Sent!" : "Verification Email Sent!"}
+            {isResetPassword ? t("check-email.reset-title") : t("check-email.verify-title")}
           </h3>
           <div className="space-y-3 text-gray-600">
             <p>
-              We&apos;ve sent {isResetPassword ? "a password reset link" : "a verification link"} to:
+              {isResetPassword ? t("check-email.reset-message") : t("check-email.verify-message")}
             </p>
             {email && (
               <p className="font-medium text-gray-900 bg-gray-50 px-4 py-2 rounded-lg">
@@ -100,8 +129,8 @@ function CheckEmailContent() {
             )}
             <p className="text-sm">
               {isResetPassword
-                ? "Please check your email and click on the password reset link to create a new password."
-                : "Please check your email and click on the verification link to activate your account."
+                ? t("check-email.reset-instruction")
+                : t("check-email.verify-instruction")
               }
             </p>
           </div>
@@ -123,12 +152,12 @@ function CheckEmailContent() {
                 d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.082 16.5c-.77.833.192 2.5 1.732 2.5z"
               />
             </svg>
-            Can&apos;t find the email?
+            {t("check-email.cant-find")}
           </h4>
           <ul className="text-sm text-yellow-700 space-y-1 ml-7">
-            <li>• Check your spam or junk folder</li>
-            <li>• Make sure your email address is correct</li>
-            <li>• The email might take a few minutes to arrive</li>
+            <li>• {t("check-email.spam-tip")}</li>
+            <li>• {t("check-email.correct-email")}</li>
+            <li>• {t("check-email.delivery-time")}</li>
           </ul>
         </div>
 
@@ -140,7 +169,7 @@ function CheckEmailContent() {
             className="w-full"
             disabled={!email}
           >
-            Resend {isResetPassword ? "Password Reset" : "Verification"} Email
+            {isResetPassword ? t("check-email.resend-reset") : t("check-email.resend-verify")}
           </Button>
 
           <div className="flex gap-3">
@@ -149,14 +178,14 @@ function CheckEmailContent() {
               onClick={() => router.push(routes.auth.signIn)}
               className="flex-1"
             >
-              Sign In Instead
+              {t("check-email.sign-in-instead")}
             </Button>
             <Button
               variant="outline"
               onClick={() => router.push(routes.auth.signUp)}
               className="flex-1"
             >
-              Back to Sign Up
+              {t("check-email.back-sign-up")}
             </Button>
           </div>
         </div>
@@ -164,12 +193,12 @@ function CheckEmailContent() {
         {/* Support */}
         <div className="pt-6 border-t border-gray-200">
           <p className="text-sm text-gray-500">
-            Still having trouble?{" "}
+            {t("check-email.support")}{" "}
             <a
               href="mailto:allouchayman21@gmail.com"
               className="text-primary hover:text-primary/80 font-medium"
             >
-              Contact Support
+              {t("check-email.contact-support")}
             </a>
           </p>
         </div>

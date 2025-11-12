@@ -186,6 +186,33 @@
       "joinDate": "يناير 2024"
     }
   },
+  "landing": {
+    "hero": {
+      "title": "الشركة الإقليمية للخدمات المتعددة القطاعات",
+      "subtitle": "سوس ماسة",
+      "description": "شريككم الموثوق للخدمات المتعددة القطاعات في منطقة سوس ماسة. نقدم حلولاً شاملة في التدخلات الفنية والصيانة الصناعية وإدارة الشكاوى لضمان التميز التشغيلي لمنشآتكم.",
+      "createAccount": "إنشاء حساب",
+      "signIn": "تسجيل الدخول",
+      "accessDashboard": "الوصول إلى لوحة التحكم"
+    },
+    "features": {
+      "interventions": {
+        "title": "التدخلات الفنية",
+        "description": "إدارة شاملة لتدخلات الصيانة والإصلاح لمعداتكم الصناعية."
+      },
+      "reclamations": {
+        "title": "إدارة الشكاوى",
+        "description": "معالجة فعالة للشكاوى المبلغ عنها والمشاكل للحل السريع."
+      },
+      "reports": {
+        "title": "التقارير التفصيلية",
+        "description": "إنشاء تلقائي لتقارير DOCX وExcel لمتابعة شفافة لجميع العمليات."
+      }
+    },
+    "footer": {
+      "copyright": "© 2024 الشركة الإقليمية للخدمات المتعددة القطاعات سوس ماسة. جميع الحقوق محفوظة. صنع بواسطة أيمن ألوش"
+    }
+  },
   "form": {
     "date": "التاريخ",
     "station-name": "اسم المحطة",
@@ -200,5 +227,139 @@
     "recipient-emails": "رسائل البريد الإلكتروني للمستلمين",
     "remove": "إزالة",
     "add-recipient-email": "إضافة بريد إلكتروني للمستلم"
+  },
+  "sign-up": {
+    "success": "تم إنشاء الحساب بنجاح! يرجى التحقق من بريدك الإلكتروني لتأكيد حسابك.",
+    "failed": "فشل في إنشاء الحساب. يرجى المحاولة مرة أخرى.",
+    "create-account": "إنشاء حساب",
+    "already-have-account": "لديك حساب بالفعل؟",
+    "sign-in": "تسجيل الدخول",
+    "account-exists": "الحساب موجود بالفعل",
+    "account-exists-desc": "يوجد حساب بالفعل بهذا البريد الإلكتروني. هل تريد تسجيل الدخول بدلاً من ذلك؟",
+    "cancel": "إلغاء"
+  },
+  "sign-in": {
+    "title": "تسجيل الدخول",
+    "email": "البريد الإلكتروني",
+    "password": "كلمة المرور",
+    "forgot-password": "هل نسيت كلمة المرور؟",
+    "sign-in": "تسجيل الدخول"
+  },
+  "reset-password": {
+    "title": "إعادة تعيين كلمة المرور",
+    "email": "البريد الإلكتروني",
+    "send-reset-link": "إرسال رابط إعادة التعيين",
+    "back-to-sign-in": "العودة إلى تسجيل الدخول"
+  },
+  "forgot-password": {
+    "title": "هل نسيت كلمة المرور؟",
+    "email": "البريد الإلكتروني",
+    "send-reset-link": "إرسال رابط إعادة التعيين",
+    "back-to-sign-in": "العودة إلى تسجيل الدخول"
+  },
+  "verify-email": {
+    "title": "تحقق من بريدك الإلكتروني",
+    "description": "لقد أرسلنا رابط تحقق إلى بريدك الإلكتروني. يرجى التحقق من بريدك الإلكتروني والنقر على الرابط لتأكيد حسابك.",
+    "resend-link": "إعادة إرسال الرابط",
+    "back-to-sign-in": "العودة إلى تسجيل الدخول"
+  },
+  "change-password": {
+    "title": "تغيير كلمة المرور",
+    "current-password": "كلمة المرور الحالية",
+    "new-password": "كلمة المرور الجديدة",
+    "confirm-password": "تاكيد كلمة المرور",
+    "change-password": "تغيير كلمة المرور"
+  },
+  "admin": {
+    "title": "لوحة الإدارة",
+    "subtitle": "إدارة المستخدمين ومراقبة نشاط النظام",
+    "dashboard": "لوحة الإدارة",
+    "manage-users": "إدارة المستخدمين وتقديماتهم",
+    "export-all-data": "تصدير جميع البيانات",
+    "total-users": "إجمالي المستخدمين",
+    "total-interventions": "إجمالي التدخلات",
+    "total-reclamations": "إجمالي الشكاوى",
+    "active-users-month": "المستخدمون النشطون (هذا الشهر)",
+    "users-overview": "نظرة عامة على المستخدمين",
+    "no-users-found": "لم يتم العثور على مستخدمين",
+    "no-user-data": "لا توجد بيانات مستخدم متاحة",
+    "user": "المستخدم",
+    "status": "الحالة",
+    "interventions": "التدخلات",
+    "reclamations": "الشكاوى",
+    "total-records": "إجمالي السجلات",
+    "last-activity": "النشاط الأخير",
+    "actions": "الإجراءات",
+    "verified": "موثق",
+    "unverified": "غير موثق",
+    "never": "أبداً",
+    "view-details": "عرض التفاصيل",
+    "remove-admin": "إزالة الإداري",
+    "make-admin": "جعل إداري",
+    "loading": "جارٍ التحميل...",
+    "checking-permissions": "جارٍ التحقق من الأذونات...",
+    "access-denied": "تم رفض الوصول",
+    "no-permission": "ليس لديك إذن للوصول إلى لوحة الإدارة.",
+    "go-dashboard": "الذهاب إلى لوحة التحكم",
+    "loading-admin-data": "جارٍ تحميل بيانات الإدارة...",
+    "export-success": "تم إكمال تصدير الإدارة بنجاح!",
+    "export-error": "فشل في تصدير السجلات",
+    "export-failed": "حدث خطأ أثناء التصدير",
+    "role-update-success": "تم تحديث دور المستخدم بنجاح",
+    "role-update-error": "فشل في تحديث دور المستخدم",
+    "role-update-failed": "حدث خطأ أثناء تحديث دور المستخدم",
+    "user-details": "تفاصيل المستخدم",
+    "email-verified": "تم التحقق من البريد الإلكتروني",
+    "joined": "انضم",
+    "user-interventions": "تدخلات المستخدم",
+    "user-reclamations": "شكاوى المستخدم",
+    "company": "الشركة",
+    "site": "الموقع",
+    "responsible": "المسؤول",
+    "start": "البداية",
+    "team": "الفريق",
+    "created": "تم الإنشاء",
+    "station": "المحطة",
+    "type": "النوع",
+    "date": "التاريخ",
+    "description": "الوصف",
+    "and-more": "... و {{count}} أكثر"
+  },
+  "records": {
+    "all-records": "جميع السجلات",
+    "manage-desc": "إدارة وعرض جميع سجلات التدخل والشكوى",
+    "export-excel": "تصدير إلى Excel",
+    "records-overview": "نظرة عامة على السجلات",
+    "no-records-found": "لم يتم العثور على سجلات",
+    "create-first": "أنشئ تدخلك أو شكواك الأولى للبدء.",
+    "intervention-details": "تفاصيل التدخل",
+    "reclamation-details": "تفاصيل الشكوى",
+    "company-name": "اسم الشركة",
+    "responsible-person": "الشخص المسؤول",
+    "site-name": "اسم الموقع",
+    "start-date": "تاريخ البداية",
+    "end-date": "تاريخ النهاية",
+    "team-members": "أعضاء الفريق",
+    "photo": "الصورة",
+    "intervention-photo": "صورة التدخل",
+    "station-name": "اسم المحطة",
+    "reclamation-type": "نوع الشكوى",
+    "date": "التاريخ",
+    "description": "الوصف",
+    "reclamation-photo": "صورة الشكوى",
+    "recipient-emails": "رسائل البريد الإلكتروني للمستلمين",
+    "created-at": "تم الإنشاء في"
+  },
+  "table": {
+    "type": "النوع",
+    "company-station": "الشركة/المحطة",
+    "responsible-person": "الشخص المسؤول",
+    "date-range": "نطاق التاريخ",
+    "site-type": "الموقع/النوع",
+    "team-members": "أعضاء الفريق",
+    "description": "الوصف",
+    "photo": "الصورة",
+    "recipients": "المستلمون",
+    "created-at": "تم الإنشاء في"
   }
 }
