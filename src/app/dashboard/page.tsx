@@ -74,6 +74,13 @@ function DashboardContent() {
 
   useEffect(() => {
     const section = searchParams.get('section');
+    if (section === 'records') {
+      setActiveSection('records');
+    }
+  }, [searchParams]);
+
+  useEffect(() => {
+    const section = searchParams.get('section');
     if (section && ['overview', 'interventions', 'reclamations', 'records', 'admin'].includes(section)) {
       setActiveSection(section as 'overview' | 'interventions' | 'reclamations' | 'records' | 'admin');
     }
@@ -154,12 +161,12 @@ function DashboardContent() {
       <SidebarMenu activeSection={activeSection} onSectionChange={setActiveSection} />
 
       {/* Main Content */}
-      <div className="flex-1">
+      <div className="flex-1 lg:ml-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           {/* Header */}
           <div className="mb-8">
-            <h1 className="text-3xl font-bold text-gray-900">{t('dashboard.title')}</h1>
-            <p className="mt-2 text-gray-600">{t('dashboard.subtitle')}</p>
+            <h1 className="text-2xl sm:text-3xl font-bold text-gray-900">{t('dashboard.title')}</h1>
+            <p className="mt-2 text-sm sm:text-base text-gray-600">{t('dashboard.subtitle')}</p>
           </div>
 
           {/* Breadcrumb Navigation */}

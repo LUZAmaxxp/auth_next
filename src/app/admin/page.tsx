@@ -309,15 +309,15 @@ export default function AdminPage() {
       <SidebarMenu activeSection={activeSection} onSectionChange={setActiveSection} />
 
       {/* Main Content */}
-      <div className="flex-1">
+      <div className="flex-1 lg:ml-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           {/* Header */}
           <div className="mb-8">
             <div className="flex items-center gap-3 mb-2">
               <Shield className="w-8 h-8 text-blue-600" />
-              <h1 className="text-3xl font-bold text-gray-900">{t('admin.title')}</h1>
+              <h1 className="text-2xl sm:text-3xl font-bold text-gray-900">{t('admin.title')}</h1>
             </div>
-            <p className="text-gray-600">{t('admin.subtitle')}</p>
+            <p className="text-sm sm:text-base text-gray-600">{t('admin.subtitle')}</p>
           </div>
 
           {/* View Toggle */}
