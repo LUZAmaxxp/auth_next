@@ -11,7 +11,7 @@ interface SidebarMenuProps {
   onSectionChange?: (section: 'overview' | 'interventions' | 'reclamations' | 'records' | 'admin') => void;
 }
 
-export default function SidebarMenu({ activeSection, onSectionChange }: SidebarMenuProps) {
+export default function SidebarMenu({ activeSection }: SidebarMenuProps) {
   const router = useRouter();
   const { t } = useTranslation();
   const [isAdmin, setIsAdmin] = useState(false);
@@ -81,13 +81,7 @@ export default function SidebarMenu({ activeSection, onSectionChange }: SidebarM
         className={`w-10 h-10 rounded-lg flex items-center justify-center cursor-pointer transition-colors ${
           activeSection === 'records' ? 'bg-primary text-primary-foreground' : 'bg-muted text-muted-foreground hover:bg-muted/80'
         }`}
-        onClick={() => {
-          if (onSectionChange) {
-            onSectionChange('records');
-          } else {
-            router.push('/dashboard?section=records');
-          }
-        }}
+        onClick={() => router.push('/dashboard?section=records')}
         title={t('navigation.records')}
       >
         <Table className="w-6 h-6" />
