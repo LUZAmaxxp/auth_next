@@ -117,19 +117,19 @@ export default function RecordsTable({ records, }: RecordsTableProps) {
             </div>
           ) : (
             <div className="overflow-x-auto">
-              <table className="w-full">
+              <table className="w-full min-w-[1200px]">
                 <thead>
                   <tr className="border-b">
-                    <th className="text-left py-3 px-4 font-medium text-gray-900">{t('table.type')}</th>
-                    <th className="text-left py-3 px-4 font-medium text-gray-900">{t('table.company-station')}</th>
-                    <th className="text-left py-3 px-4 font-medium text-gray-900">{t('table.responsible-person')}</th>
-                    <th className="text-left py-3 px-4 font-medium text-gray-900">{t('table.date-range')}</th>
-                    <th className="text-left py-3 px-4 font-medium text-gray-900">{t('table.site-type')}</th>
-                    <th className="text-left py-3 px-4 font-medium text-gray-900">{t('table.team-members')}</th>
-                    <th className="text-left py-3 px-4 font-medium text-gray-900">{t('table.description')}</th>
-                    <th className="text-left py-3 px-4 font-medium text-gray-900">{t('table.photo')}</th>
-                    <th className="text-left py-3 px-4 font-medium text-gray-900">{t('table.recipients')}</th>
-                    <th className="text-left py-3 px-4 font-medium text-gray-900">{t('table.created-at')}</th>
+                    <th className="text-left py-3 px-4 font-medium text-gray-900 min-w-[120px]">{t('table.type')}</th>
+                    <th className="text-left py-3 px-4 font-medium text-gray-900 min-w-[150px]">{t('table.company-station')}</th>
+                    <th className="text-left py-3 px-4 font-medium text-gray-900 min-w-[150px]">{t('table.responsible-person')}</th>
+                    <th className="text-left py-3 px-4 font-medium text-gray-900 min-w-[150px]">{t('table.date-range')}</th>
+                    <th className="text-left py-3 px-4 font-medium text-gray-900 min-w-[120px]">{t('table.site-type')}</th>
+                    <th className="text-left py-3 px-4 font-medium text-gray-900 min-w-[150px]">{t('table.team-members')}</th>
+                    <th className="text-left py-3 px-4 font-medium text-gray-900 min-w-[200px]">{t('table.description')}</th>
+                    <th className="text-left py-3 px-4 font-medium text-gray-900 min-w-[100px]">{t('table.photo')}</th>
+                    <th className="text-left py-3 px-4 font-medium text-gray-900 min-w-[200px]">{t('table.recipients')}</th>
+                    <th className="text-left py-3 px-4 font-medium text-gray-900 min-w-[150px]">{t('table.created-at')}</th>
                   </tr>
                 </thead>
                 <tbody>

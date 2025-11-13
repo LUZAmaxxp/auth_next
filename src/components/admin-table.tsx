@@ -239,16 +239,16 @@ export default function AdminTable({ users }: AdminTableProps) {
             </div>
           ) : (
             <div className="overflow-x-auto">
-              <table className="w-full">
+              <table className="w-full min-w-[800px]">
                 <thead>
                   <tr className="border-b">
-                    <th className="text-left py-3 px-4 font-medium text-gray-900">{t('admin.user')}</th>
-                    <th className="text-left py-3 px-4 font-medium text-gray-900">{t('admin.status')}</th>
-                    <th className="text-left py-3 px-4 font-medium text-gray-900">{t('admin.interventions')}</th>
-                    <th className="text-left py-3 px-4 font-medium text-gray-900">{t('admin.reclamations')}</th>
-                    <th className="text-left py-3 px-4 font-medium text-gray-900">{t('admin.total-records')}</th>
-                    <th className="text-left py-3 px-4 font-medium text-gray-900">{t('admin.last-activity')}</th>
-                    <th className="text-left py-3 px-4 font-medium text-gray-900">{t('admin.actions')}</th>
+                    <th className="text-left py-3 px-4 font-medium text-gray-900 min-w-[200px]">{t('admin.user')}</th>
+                    <th className="text-left py-3 px-4 font-medium text-gray-900 min-w-[100px]">{t('admin.status')}</th>
+                    <th className="text-left py-3 px-4 font-medium text-gray-900 min-w-[120px]">{t('admin.interventions')}</th>
+                    <th className="text-left py-3 px-4 font-medium text-gray-900 min-w-[120px]">{t('admin.reclamations')}</th>
+                    <th className="text-left py-3 px-4 font-medium text-gray-900 min-w-[120px]">{t('admin.total-records')}</th>
+                    <th className="text-left py-3 px-4 font-medium text-gray-900 min-w-[120px]">{t('admin.last-activity')}</th>
+                    <th className="text-left py-3 px-4 font-medium text-gray-900 min-w-[200px]">{t('admin.actions')}</th>
                   </tr>
                 </thead>
                 <tbody>
